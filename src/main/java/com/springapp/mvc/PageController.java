@@ -39,3 +39,12 @@ class EditProductController {
 		return "EditProduct";
 	}
 }
+
+@Controller
+@RequestMapping("/PageProTransTable")
+class PageProTransTableController {
+	@RequestMapping(method = RequestMethod.POST)
+	public String printWelcome(ModelMap model) {
+		return "components/productTranslationsTable";
+	}
+}

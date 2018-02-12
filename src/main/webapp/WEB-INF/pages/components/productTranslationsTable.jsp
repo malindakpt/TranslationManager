@@ -14,12 +14,16 @@
         <th>
             Product Key
         </th>
+        <th>
+
+        </th>
     </tr>
 <%
     String productId = request.getParameter("productId");
-    String languageId = request.getParameter("languageId");
+    int languageId = Integer.parseInt(request.getParameter("languageId"));
     EntityManager entityManager = new EntityManager();
-    List<Entity> productTranslationList = entityManager.getProductLanguage("1", 1);
+    List<Entity> productTranslationList = entityManager.getProductLanguage(productId, languageId);
+    if(productTranslationList != null){
     for( Entity entity: productTranslationList){
         ProductTranslation productTranslation = (ProductTranslation) entity;
 %>
@@ -33,9 +37,17 @@
     <td>
         <%=productTranslation.getTranslationEntity().getLanguageTerm()%>
     </td>
+    <td>
+        <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="removeProdTrans(this)">Remove</button>
+    </td>
 </tr>
 <%
+        }
     }
 %>
 
 </table>
+
+<script>
+
+</script>

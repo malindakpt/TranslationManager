@@ -27,16 +27,17 @@ public class EntityManager {
     }
 
     /* Method to DELETE an employee from the records */
-    public void delete(Entity entity, int id){
+    public void delete(Class entity,String colName, String value){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-//            Student student = (Student)session.get(Entity.class, id);
-//            session.delete(student);
+            Query query = session.createQuery("delete "+entity.getSimpleName()+" where "+colName+" = :value");
+            query.setParameter("value", Integer.parseInt(value));
+            query.executeUpdate();
             tx.commit();
-        } catch (HibernateException e) {
+        } catch (Exception e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();
         } finally {

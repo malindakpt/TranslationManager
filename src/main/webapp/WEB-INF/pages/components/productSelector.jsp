@@ -3,8 +3,8 @@
 <%@ page import="entityManager.EntityManager" %>
 <%@ page import="entity.Language" %>
 <%@ page import="entity.Product" %>
-<select id="productSelector"  class="w3-select" class="w3-select" onchange="languageChanged()">
-    <option>-Select an Product-</option>
+<select id="productSelector"  class="w3-select" class="w3-select" onchange="onProductChange()">
+    <option value="-1"> - Select an Product -</option>
     <%
         EntityManager entityManager = new EntityManager();
         List<Entity> languages = entityManager.getEntities(Product.class);
