@@ -2,10 +2,10 @@ package entityManager;
 
 import AppConfig.HibernateUtil;
 import entity.Entity;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import entity.ProductTranslation;
+import org.hibernate.*;
+
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -229,6 +229,61 @@ public class EntityManager {
 
             tx.commit();
             return entities;
+        } catch (Exception e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    public static List<HashMap> getSQLQuery(int examId, int schoolId){
+        List<HashMap> entities;
+        Session session = null;
+        Transaction tx = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            String sql = "SELECT studentId,sum(marks) as total FROM assesment WHERE examId= :examId and schoolId= :schoolId  group by studentId order by total desc";//" WHERE examId=1 group by studentId order by total desc";
+            SQLQuery query = session.createSQLQuery(sql);
+            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+            query.setParameter("examId", examId);
+            query.setParameter("schoolId", schoolId);
+            entities = query.list();
+            tx.commit();
+            return entities;
+        } catch (Exception e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    public List<Entity> getProductLanguage(String productId, int languageId){
+        List<Entity> entities;// = new ArrayList<Entity>();
+        Session session = null;
+        Transaction tx = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            String hql = "FROM  ProductTranslation pt WHERE productId= :productId AND pt.translationEntity.language.languageId= :languageId ";
+            Query query = session.createQuery(hql);
+            query.setParameter("productId", productId);
+            query.setParameter("languageId", languageId);
+            entities = query.list();
+            tx.commit();
+
+            if(entities.size()>0){
+                return entities;
+            }else{
+                return null;
+            }
+
         } catch (Exception e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();

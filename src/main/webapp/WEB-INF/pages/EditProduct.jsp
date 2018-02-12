@@ -11,6 +11,9 @@
 
 
 </div>
+<div class="w3-row">
+  <jsp:include page="components/productTranslationsTable.jsp"/>
+</div>
 
 <script>
     function addTranslationToProduct() {

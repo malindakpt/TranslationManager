@@ -35,7 +35,7 @@ public class TranslationEntity extends Entity {
         this.language = language;
     }
 
-    @Column(name = "defaultKey", nullable = true, length = 30)
+    @Column(name = "defaultKey", nullable = true, length = 300)
     public String getDefaultKey() {
         return defaultKey;
     }
@@ -43,7 +43,7 @@ public class TranslationEntity extends Entity {
         this.defaultKey = defaultKey;
     }
 
-    @Column(name = "languageTerm", nullable = true, length = 30)
+    @Column(name = "languageTerm", nullable = true, length = 300)
     public String getLanguageTerm() {
         return languageTerm;
     }
