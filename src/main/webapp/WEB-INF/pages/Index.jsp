@@ -31,9 +31,9 @@
         <i class="fa fa-user w3-xxlarge"></i>
         <p>ADD TRANSLATION</p>
     </a>
-    <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black" onclick="getAndSetPage('PageEditProduct')">
         <i class="fa fa-eye w3-xxlarge"></i>
-        <p>PHOTOS</p>
+        <p>EDIT PRODUCT</p>
     </a>
     <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
         <i class="fa fa-envelope w3-xxlarge"></i>

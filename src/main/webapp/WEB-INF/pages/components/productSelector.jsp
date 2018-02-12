@@ -2,15 +2,16 @@
 <%@ page import="java.util.List" %>
 <%@ page import="entityManager.EntityManager" %>
 <%@ page import="entity.Language" %>
+<%@ page import="entity.Product" %>
 <select id="languageSelector"  class="w3-select" class="w3-select" onchange="languageChanged()">
-    <option>-Select an Language-</option>
+    <option>-Select an Product-</option>
     <%
         EntityManager entityManager = new EntityManager();
-        List<Entity> languages = entityManager.getEntities(Language.class);
+        List<Entity> languages = entityManager.getEntities(Product.class);
         for(Entity entity : languages){
-            Language language = (Language)entity;
+            Product product = (Product)entity;
     %>
-            <option value="<%=language.getLanguageId()%>"><%=language.getName()%></option>
+            <option value="<%=product.getProductId()%>"><%=product.getProductName()%></option>
     <%
         }
     %>

@@ -30,3 +30,12 @@ class AddLanguageController {
 		return "AddLanguage";
 	}
 }
+
+@Controller
+@RequestMapping("/PageEditProduct")
+class EditProductController {
+	@RequestMapping(method = RequestMethod.POST)
+	public String printWelcome(ModelMap model) {
+		return "EditProduct";
+	}
+}
