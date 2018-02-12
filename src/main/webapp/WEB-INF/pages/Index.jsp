@@ -27,15 +27,15 @@
         <i class="fa fa-home w3-xxlarge"></i>
         <p>ADD LANGUAGE</p>
     </a>
-    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black" onclick="getAndSetPage('PageAddTranslation')">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black" onclick="getAndSetPage('PageAddTranslation')">
         <i class="fa fa-user w3-xxlarge"></i>
         <p>ADD TRANSLATION</p>
     </a>
-    <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black" onclick="getAndSetPage('PageEditProduct')">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black" onclick="getAndSetPage('PageEditProduct')">
         <i class="fa fa-eye w3-xxlarge"></i>
         <p>EDIT PRODUCT</p>
     </a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
         <i class="fa fa-envelope w3-xxlarge"></i>
         <p>CONTACT</p>
     </a>
@@ -107,7 +107,7 @@
         <i class="fa fa-pinterest-p w3-hover-opacity"></i>
         <i class="fa fa-twitter w3-hover-opacity"></i>
         <i class="fa fa-linkedin w3-hover-opacity"></i>
-        <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+        <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">Mubasher Trade</a></p>
         <!-- End footer -->
     </footer>
 

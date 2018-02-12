@@ -25,6 +25,15 @@
 		<url-pattern>/AddTranslation</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>AddTranslationToProduct</servlet-name>
+		<servlet-class>servlet.AddTranslationToProduct</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTranslationToProduct</servlet-name>
+		<url-pattern>/AddTranslationToProduct</url-pattern>
+	</servlet-mapping>
+
 
 	<!--School Management End-->
 
