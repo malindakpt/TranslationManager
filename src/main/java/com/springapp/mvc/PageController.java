@@ -16,7 +16,7 @@ public class PageController {
 @Controller
 @RequestMapping("/PageAddTranslation")
 class AddTranslationController {
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.POST)
 	public String printWelcome(ModelMap model) {
 		return "AddTranslation";
 	}

@@ -4,6 +4,8 @@ package servlet; /**
 // Import required java libraries
 
 
+import entity.Language;
+import entity.TranslationEntity;
 import entity.User;
 import entityManager.EntityManager;
 
@@ -21,9 +23,18 @@ public class AddTranslation extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        User user1 = new User();
-        new EntityManager().add(user1);
+        EntityManager entityManager = new EntityManager();
+        String languageId = request.getParameter("language");
+        String defKey = request.getParameter("defKey");
+        String translation = request.getParameter("translation");
 
+        Language language = (Language) entityManager.getEntity(Language.class, "languageId", languageId);
+        TranslationEntity translationEntity = new TranslationEntity();
+        translationEntity.setLanguage(language);
+        translationEntity.setDefaultKey(defKey);
+        translationEntity.setLanguageTerm(translation);
+
+        entityManager.add(translationEntity);
     }
 
     public void doGet(HttpServletRequest request,

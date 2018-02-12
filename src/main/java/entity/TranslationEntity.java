@@ -8,13 +8,12 @@ import javax.persistence.*;
  * Created by MalindaK on 2/8/2018.
  */
 @javax.persistence.Entity
-@Table(name = "TranslationEntity", catalog = DBConfig.DB_NAME, uniqueConstraints = {
+@Table(name = "translationEntity", catalog = DBConfig.DB_NAME, uniqueConstraints = {
         @UniqueConstraint(columnNames = "translationEntityId")})
 public class TranslationEntity extends Entity {
     private int translationEntityId;
     private Language language;
     private String defaultKey;
-    private String englishTerm;
     private String languageTerm;
 
     @Id
@@ -42,14 +41,6 @@ public class TranslationEntity extends Entity {
     }
     public void setDefaultKey(String defaultKey) {
         this.defaultKey = defaultKey;
-    }
-
-    @Column(name = "englishTerm", nullable = true, length = 30)
-    public String getEnglishTerm() {
-        return englishTerm;
-    }
-    public void setEnglishTerm(String englishTerm) {
-        this.englishTerm = englishTerm;
     }
 
     @Column(name = "languageTerm", nullable = true, length = 30)
