@@ -11,8 +11,8 @@ import java.util.Set;
 public class ProductTranslation extends Entity {
     private int productTranslationId;
     private Product product;
-//    private String localizationKey;
-//    private TranslationEntity translationEntity;
+    private String localizationKey;
+    private TranslationEntity translationEntity;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,20 +33,20 @@ public class ProductTranslation extends Entity {
         this.product = product;
     }
 
-//    @Column(name = "localizationKey", nullable = true, length = 30)
-//    public String getLocalizationKey() {
-//        return localizationKey;
-//    }
-//    public void setLocalizationKey(String localizationKey) {
-//        this.localizationKey = localizationKey;
-//    }
+    @Column(name = "localizationKey", nullable = true, length = 30)
+    public String getLocalizationKey() {
+        return localizationKey;
+    }
+    public void setLocalizationKey(String localizationKey) {
+        this.localizationKey = localizationKey;
+    }
 
-//    @ManyToOne(optional = false)
-//    @JoinColumn(name="translationEntityId")
-//    public TranslationEntity getTranslationEntity() {
-//        return translationEntity;
-//    }
-//    public void setTranslationEntity(TranslationEntity translationEntity) {
-//        this.translationEntity = translationEntity;
-//    }
+    @ManyToOne(optional = false)
+    @JoinColumn(name="translationEntityId")
+    public TranslationEntity getTranslationEntity() {
+        return translationEntity;
+    }
+    public void setTranslationEntity(TranslationEntity translationEntity) {
+        this.translationEntity = translationEntity;
+    }
 }
