@@ -5,7 +5,7 @@
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <br>
-<table class="w3-table w3-striped w3-bordered">
+<table class="w3-table w3-striped w3-bordered" id="productTransTable">
     <tr>
        <th>
            Localization Key
@@ -19,17 +19,18 @@
         </th>
         <th>
             Translation
+            <button class="w3-button w3-green w3-small w3-right " onclick="downloadFile('English')">Download EN</button>
+            <button class="w3-button w3-green w3-small w3-right w3-margin-right"  onclick="downloadFile('Arabic')">Download AR</button>
         </th>
 
         <th>
 
+
         </th>
     </tr>
 <%
-    String unicode = "\u0048\u0065\u006C\u006C\u006F";
-    String Title = StringEscapeUtils.unescapeJava(unicode);
+
     String productId = request.getParameter("productId");
-//    int languageId = Integer.parseInt(request.getParameter("languageId"));
     EntityManager entityManager = new EntityManager();
     List<Entity> productTranslationList = entityManager.getProductLanguageTranslations(productId);
     if(productTranslationList != null){
@@ -51,8 +52,10 @@
         <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="getEditWidget(this)">
             <i class="fa fa-edit w3-large"></i>
         </button>
-         <%=StringEscapeUtils.unescapeJava(productTranslation.getTranslationEntity().getLanguageTerm())%>
-        <%--<%= productTranslation.getTranslationEntity().getLanguageTerm()%>--%>
+        <span data-key="<%=productTranslation.getLocalizationKey()%>" rel="<%=productTranslation.getTranslationEntity().getLanguage().getName()%>">
+          <%=StringEscapeUtils.unescapeJava(productTranslation.getTranslationEntity().getLanguageTerm())%>
+        </span>
+
 
     </td>
 
@@ -68,5 +71,14 @@
 </table>
 
 <script>
+    function downloadFile(lan) {
+        var str = "";
+        $("#productTransTable span[rel=" + lan + "]").each(function () {
+           str = str +(this.dataset.key+" : '"+this.innerText+"',\n");
+        });
+        var filename = "asd";
+        var blob = new Blob([str], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, lan+".txt");
+    }
 
 </script>
