@@ -6,6 +6,7 @@
 <%
     EntityManager entityManager = new EntityManager();
     String prodTransId = request.getParameter("prodTransId");
+    int type = Integer.parseInt(request.getParameter("type"));
     TranslationEntity translationEntity = (TranslationEntity) entityManager.getEntity(TranslationEntity.class, "translationEntityId", prodTransId);
 
 %>
@@ -30,12 +31,12 @@
         </div>
 
         <div class="w3-container w3-light-grey w3-padding">
-            <button class="w3-button w3-right w3-blue " onclick="editTranslation()">Save</button>
+            <button class="w3-button w3-right w3-blue " onclick="editTranslation(<%=type%>)">Save</button>
         </div>
     </div>
 </div>
 <script>
-    function editTranslation() {
+    function editTranslation(type) {
 
         $.post('EditTranslation', {
                 transEntityID: <%=translationEntity.getTranslationEntityId()%>,
@@ -46,7 +47,11 @@
                 console.log("Edited Translation");
                 $('#id01').hide();
                 if (result === "") {
-                    getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+                    if(type == 1) {
+                        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+                    }else{
+                        getAndSetPage('PageAllTranslations');
+                    }
                 } else {
                     alert(result);
                 }

@@ -80,6 +80,10 @@
 </table>
 
 <script>
+
+    function getEditWidget(ele) {
+        getAndSetPage("PageEditTranslation?type=1&prodTransId="+ele.id, "editTranslationContainer");
+    }
     function downloadFile(lan) {
         var str = "";
         $("#productTransTable span[rel=" + lan + "]").each(function () {

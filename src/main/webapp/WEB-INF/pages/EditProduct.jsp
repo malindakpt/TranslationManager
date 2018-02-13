@@ -54,9 +54,7 @@
     function onLanguageChange() {
         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
     }
-    function getEditWidget(ele) {
-        getAndSetPage("PageEditTranslation?prodTransId="+ele.id, "editTranslationContainer");
-    }
+
 
     function editProdTrans(ele) {
 

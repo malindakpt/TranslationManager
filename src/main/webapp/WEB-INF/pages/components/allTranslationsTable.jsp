@@ -59,6 +59,6 @@
 
 <script>
     function getEditWidget(ele) {
-        getAndSetPage("PageEditTranslation?prodTransId="+ele.id, "editTranslationContainer");
+        getAndSetPage("PageEditTranslation?type=2&prodTransId="+ele.id, "editTranslationContainer");
     }
 </script>

@@ -141,14 +141,8 @@
             <img src="img/logo2.png" style="
             width: 200px;
             height: 90px;
-                margin-left: 76px;
-    margin-top: 32px;
-            /*border-radius: 50%;*/
-            /*padding: 20px;*/
-            /*margin-top: 44px;*/
-            /*margin: auto;*/
-            /*display: block;"*/
-            >
+            margin-left: 76px;
+            margin-top: 32px; ">
         </div>
 
         <div class="container">
