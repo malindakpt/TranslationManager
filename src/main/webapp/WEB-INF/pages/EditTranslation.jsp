@@ -1,15 +1,12 @@
 <%@ page import="entityManager.EntityManager" %>
-<%@ page import="entity.Entity" %>
-<%@ page import="java.util.List" %>
-<%@ page import="entity.Language" %>
-<%@ page import="entity.ProductTranslation" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
+<%@ page import="entity.TranslationEntity" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
     EntityManager entityManager = new EntityManager();
     String prodTransId = request.getParameter("prodTransId");
-    ProductTranslation productTranslation = (ProductTranslation) entityManager.getEntity(ProductTranslation.class, "productTranslationId", prodTransId);
+    TranslationEntity translationEntity = (TranslationEntity) entityManager.getEntity(TranslationEntity.class, "translationEntityId", prodTransId);
 
 %>
 <div id="id01" class="w3-modal">
@@ -24,13 +21,11 @@
 
             <label>Default Key</label>
             <br>
-            <label class="w3-margin-left"><b><%=productTranslation.getLocalizationKey()%></b></label>
+            <label class="w3-margin-left"><b><%=translationEntity.getDefaultKey()%></b></label>
             <br>
             <br>
-            <%--<input id="defKey" class="w3-input" type="text" disabled value="">--%>
-
-            <label><%=productTranslation.getTranslationEntity().getLanguage().getName()%></label>
-            <input rel="translations" id="transVal" class="w3-input" type="text" value="<%=StringEscapeUtils.unescapeJava(productTranslation.getTranslationEntity().getLanguageTerm())%>">
+            <label><%=translationEntity.getLanguage().getName()%></label>
+            <input rel="translations" id="transVal" class="w3-input" type="text" value="<%=StringEscapeUtils.unescapeJava(translationEntity.getLanguageTerm())%>">
 
         </div>
 
@@ -43,7 +38,7 @@
     function editTranslation() {
 
         $.post('EditTranslation', {
-                transEntityID: <%=productTranslation.getTranslationEntity().getTranslationEntityId()%>,
+                transEntityID: <%=translationEntity.getTranslationEntityId()%>,
                 translationVal: toUnicode($('#transVal').val()),
                 sess: sess
             },

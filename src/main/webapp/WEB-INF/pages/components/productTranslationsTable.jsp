@@ -54,7 +54,7 @@
         <%=productTranslation.getTranslationEntity().getLanguage().getName()%>
     </td>
     <td>
-        <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="getEditWidget(this)">
+        <button id="<%= productTranslation.getTranslationEntity().getTranslationEntityId()%>" class="w3-button w3-tiny " onclick="getEditWidget(this)">
             <i class="fa fa-edit w3-large"></i>
         </button>
         <span data-key="<%=productTranslation.getLocalizationKey()%>" rel="<%=productTranslation.getTranslationEntity().getLanguage().getName()%>">
