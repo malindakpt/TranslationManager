@@ -2,14 +2,15 @@
 <%@ page import="entity.Entity" %>
 <%@ page import="java.util.List" %>
 <%@ page import="entity.Language" %>
-<div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <div class="w3-card-4 w3-padding">
+<div id="addTrnsModal" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="width:30%;">
+        <header class="w3-container w3-blue">
+            <span onclick="document.getElementById('addTrnsModal').style.display='none'"
+                  class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
+            <h3>Add Translation</h3>
+        </header>
 
-        <div class="w3-container w3-green">
-            <h4>Add New Translation</h4>
-        </div>
-
-        <div class="w3-container" id="transList">
+        <div class="w3-bar w3-border-bottom w3-padding" >
 
             <label>Default Key</label>
             <input id="defKey" class="w3-input" type="text" >
@@ -29,10 +30,12 @@
                 }
             %>
 
-            <button class="w3-right w3-button w3-blue w3-margin" onclick="addTranslation()">Add Translation</button>
-
+            <%--<button class="w3-right w3-button w3-blue w3-margin" onclick="addTranslation()">Add Translation</button>--%>
         </div>
 
+        <div class="w3-container w3-light-grey w3-padding">
+            <button class="w3-button w3-right w3-blue " onclick="addTranslation()">Add</button>
+        </div>
     </div>
 </div>
 

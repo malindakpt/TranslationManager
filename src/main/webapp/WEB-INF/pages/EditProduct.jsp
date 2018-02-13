@@ -3,6 +3,10 @@
 
 </div>
 
+<div id="addTranslationWidget">
+    <jsp:include page="AddTranslation.jsp"/>
+</div>
+
 <div class="w3-row">
     <div class="w3-col s3">
         <jsp:include page="components/productSelector.jsp"/>
@@ -11,11 +15,15 @@
     <div class="w3-col s8  w3-right">
         <div class="w3-row">
             <div class="w3-col s1 w3-right">
+                <button class="w3-button w3-circle w3-red" onclick="showAddTranslation()">+</button>
+            </div>
+            <div class="w3-col s1 w3-right  w3-margin-right">
                 <button class="w3-blue w3-button w3-right" onclick="addTranslationToProduct()">Add</button>
             </div>
             <div class="w3-col s4 w3-right w3-margin-right">
                 <jsp:include page="components/keySelector.jsp"/>
             </div>
+
         </div>
     </div>
 
@@ -30,6 +38,9 @@
 </div>
 
 <script>
+    function showAddTranslation() {
+        $('#addTrnsModal').show();
+    }
     function onProductChange() {
         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
     }
@@ -37,9 +48,9 @@
         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
     }
     function getEditWidget(ele) {
-        console.log("getEditWidget");
         getAndSetPage("PageEditTranslation?prodTransId="+ele.id, "editTranslationContainer");
     }
+
     function editProdTrans(ele) {
 
         $.post('PageEditTranslation', {

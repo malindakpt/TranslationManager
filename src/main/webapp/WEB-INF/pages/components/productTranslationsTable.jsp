@@ -11,12 +11,14 @@
         <th>
             Default Key
         </th>
-        <th>
-            Product Key
-        </th>
-        <th>
 
+        <th>
+            Lnaguage
         </th>
+        <th>
+            Translation
+        </th>
+
         <th>
 
         </th>
@@ -39,11 +41,16 @@
         <%=productTranslation.getTranslationEntity().getDefaultKey()%>
     </td>
     <td>
-        <%=productTranslation.getTranslationEntity().getLanguage().getName()%> : <%=productTranslation.getTranslationEntity().getLanguageTerm()%>
+        <%=productTranslation.getTranslationEntity().getLanguage().getName()%>
     </td>
     <td>
-        <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="getEditWidget(this)">Edit</button>
+        <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="getEditWidget(this)">
+            <i class="fa fa-edit w3-large"></i>
+        </button>
+         <%=productTranslation.getTranslationEntity().getLanguageTerm()%>
+
     </td>
+
     <td>
         <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="removeProdTrans(this)">Remove</button>
     </td>
