@@ -80,7 +80,7 @@
     }
     function removeProdTrans(ele) {
         $.post('RemoveTranslationToProduct', {
-                id: ele.id,
+                key: ele.dataset.key,
                 sess: sess
             },
             function (result) {

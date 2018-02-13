@@ -65,7 +65,7 @@
     </td>
 
     <td>
-        <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="removeProdTrans(this)">Remove</button>
+        <button data-key="<%= productTranslation.getLocalizationKey()%>" class="w3-button w3-tiny " onclick="removeProdTrans(this)">Remove</button>
     </td>
 </tr>
 <%

@@ -34,7 +34,7 @@ public class EntityManager {
         try {
             tx = session.beginTransaction();
             Query query = session.createQuery("delete "+entity.getSimpleName()+" where "+colName+" = :value");
-            query.setParameter("value", Integer.parseInt(value));
+            query.setParameter("value", value);
             query.executeUpdate();
             tx.commit();
         } catch (Exception e) {

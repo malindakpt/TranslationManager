@@ -23,9 +23,9 @@ public class RemoveTranslationToProduct extends HttpServlet {
             throws ServletException, IOException {
         EntityManager entityManager = new EntityManager();
         PrintWriter out = response.getWriter();
-        String id = request.getParameter("id");
-//        ProductTranslation productTranslation = (ProductTranslation) entityManager.getEntity(ProductTranslation.class, "productTranslationId", id);
-        entityManager.delete(ProductTranslation.class, "productTranslationId", id);
+//        String id = request.getParameter("id");
+        String key = request.getParameter("key");
+        entityManager.delete(ProductTranslation.class, "localizationKey", key);
     }
 
     public void doGet(HttpServletRequest request,
