@@ -275,7 +275,6 @@ public class EntityManager {
             String hql = "FROM  ProductTranslation pt WHERE productId= :productId order by pt.localizationKey asc";
             Query query = session.createQuery(hql);
             query.setParameter("productId", productId);
-//            query.setParameter("languageId", languageId);
             entities = query.list();
             tx.commit();
 

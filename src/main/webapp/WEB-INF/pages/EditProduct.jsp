@@ -8,17 +8,22 @@
 </div>
 
 <div class="w3-row">
-    <div class="w3-col s3">
+    <div class="w3-col s2">
         <jsp:include page="components/productSelector.jsp"/>
     </div>
+    <div class="w3-col s2 w3-margin-left">
+        <select class="w3-select" onchange="onProductChange()" id="fileterSelector">
+            <option value="false" selected>All Entries</option>
+            <option value="true">Empty Entries</option>
+        </select>
+    </div>
 
-    <div class="w3-col s8  w3-right">
+    <div class="w3-col s7  w3-right">
         <div class="w3-row">
             <div class="w3-col s1 w3-right">
                 <button class="w3-button w3-circle w3-red " onclick="showAddTranslation()" style="margin-left: 50px"><b>+</b></button>
             </div>
-            <div class="w3-col s3 w3-right">
-            </div>
+
             <div class="w3-col s1 w3-right  w3-margin-right">
                 <button class="w3-blue w3-button w3-right" onclick="addTranslationToProduct()">Add</button>
             </div>
@@ -44,7 +49,7 @@
         $('#addTrnsModal').show();
     }
     function onProductChange() {
-        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val()+"&showEmpty="+$('#fileterSelector').val(), "translationTable");
     }
     function onLanguageChange() {
         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");

@@ -30,6 +30,7 @@
     </tr>
 <%
 
+    String showEmpty = request.getParameter("showEmpty");
     String productId = request.getParameter("productId");
     EntityManager entityManager = new EntityManager();
     List<Entity> productTranslationList = entityManager.getProductLanguageTranslations(productId);
@@ -37,6 +38,10 @@
 
     for( Entity entity: productTranslationList){
         ProductTranslation productTranslation = (ProductTranslation) entity;
+        if( !"".equals(productTranslation.getTranslationEntity().getLanguageTerm()) && "true".equals(showEmpty)){
+            continue;
+        }
+
 %>
 <tr>
     <td>
