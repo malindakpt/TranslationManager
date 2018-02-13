@@ -68,29 +68,10 @@
     <!-- About Section -->
     <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
 
-
-        <%--<div class="w3-card-4">--%>
-
             <div id="home-middle">
 
             </div>
-            <%--<div class="w3-container w3-green">--%>
-                <%--<h2>Header</h2>--%>
-            <%--</div>--%>
 
-            <%--<form class="w3-container">--%>
-
-                <%--<label>First Name</label>--%>
-                <%--<input class="w3-input" type="text">--%>
-
-                <%--<label>Last Name</label>--%>
-                <%--<input class="w3-input" type="text">--%>
-
-            <%--</form>--%>
-
-        <%--</div>--%>
-
-        <!-- End About Section -->
     </div>
 
     <!-- Portfolio Section -->
@@ -105,14 +86,20 @@
     </div>
 
     <!-- Footer -->
-    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-snapchat w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
-        <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">Mubasher Trade</a></p>
+    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge" style="position: fixed;  bottom: -44px;  right: 27px;">
+        <div class="w3-row">
+            <i class="fa fa-facebook-official w3-hover-opacity w3-right"></i>
+            <i class="fa fa-twitter w3-hover-opacity w3-right"></i>
+            <i class="fa fa-linkedin w3-hover-opacity w3-right"></i>
+        </div>
+        <div class="w3-row">
+            <span class="w3-medium w3-right">Powered by </span>
+        </div>
+        <div class="w3-row">
+            <span class="w3-medium w3-right">Mubasher Trade 2018</span>
+        </div>
+
+
         <!-- End footer -->
     </footer>
 
