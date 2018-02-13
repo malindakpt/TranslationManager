@@ -11,11 +11,8 @@
 
         <div class="w3-container" id="transList">
 
-            <%--<label>Language</label>--%>
-            <%--<jsp:include page="components/languageSelector.jsp"/>--%>
-
             <label>Default Key</label>
-            <input id="defKey" class="w3-input" type="text">
+            <input id="defKey" class="w3-input" type="text" >
 
             <%
                 EntityManager entityManager = new EntityManager();

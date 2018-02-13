@@ -17,6 +17,9 @@
         <th>
 
         </th>
+        <th>
+
+        </th>
     </tr>
 <%
     String productId = request.getParameter("productId");
@@ -37,6 +40,9 @@
     </td>
     <td>
         <%=productTranslation.getTranslationEntity().getLanguage().getName()%> : <%=productTranslation.getTranslationEntity().getLanguageTerm()%>
+    </td>
+    <td>
+        <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="editProdTrans(this)">Edit</button>
     </td>
     <td>
         <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="removeProdTrans(this)">Remove</button>

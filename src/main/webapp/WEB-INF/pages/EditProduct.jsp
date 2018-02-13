@@ -31,6 +31,25 @@
     function onLanguageChange() {
         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
     }
+    function editProdTrans(ele) {
+        $.post('RemoveTranslationToProduct', {
+                id: ele.id,
+                sess: sess
+            },
+            function (result) {
+                console.log("Response received");
+                if (result === "") {
+                    alert("Success");
+                    getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+                } else {
+                    alert(result);
+                }
+
+            }).fail(function () {
+                alert("Error");
+            }
+        );
+    }
     function removeProdTrans(ele) {
         $.post('RemoveTranslationToProduct', {
                 id: ele.id,
