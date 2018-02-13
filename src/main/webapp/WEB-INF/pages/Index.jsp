@@ -64,11 +64,6 @@
         <i class="fa fa-user-plus w3-xxlarge"></i>
         <p>ADD USER</p>
     </a>
-
-    <%--<a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo">--%>
-        <%--<i class="fa fa-envelope w3-xxlarge"></i>--%>
-        <%--<p>CONTACT</p>--%>
-    <%--</a>--%>
 </nav>
 
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
@@ -86,8 +81,9 @@
     <!-- Header/Home -->
     <header class="w3-container w3-padding-32 w3-center w3-indigo" id="home">
         <span><h3>Mubasher Trade Language Portal</h3> </span>
-        <span>Logged in : <%=user.getName()%></span>
-        <span class="w3-right w3-margin-right"><i class="fa fa-power-off w3-xxlarge"></i></span>
+        <span>Logged As : <%=user.getName()%>  (Standard User)</span>
+        <span></span>
+        <span class="w3-right w3-margin-right" onclick="window.location.href='/PageLogin'"><i class="fa fa-power-off w3-xxlarge"></i></span>
     </header>
 
     <!-- About Section -->

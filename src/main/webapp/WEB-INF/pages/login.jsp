@@ -4,6 +4,7 @@
     <title>W3.CSS Template</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/W3.css">
 
 <style>
     /* Full-width input fields */
@@ -128,20 +129,26 @@
 
 </head>
 <body>
-<p class="wid-id">loginWindow</p>
+<p class="wid-id"></p>
 
 <div id="id01" class="modal">
 
     <div class="modal-content animate" style="max-width: 388px;">
+        <div class="w3-container w3-indigo">
+            <h4>Mubasher Trade Labguage Portal</h4>
+        </div>
         <div>
-            <img src="img/avatar.png" style="
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            padding: 20px;
-            margin-top: 44px;
-            margin: auto;
-            display: block;">
+            <img src="img/logo2.png" style="
+            width: 200px;
+            height: 90px;
+                margin-left: 76px;
+    margin-top: 32px;
+            /*border-radius: 50%;*/
+            /*padding: 20px;*/
+            /*margin-top: 44px;*/
+            /*margin: auto;*/
+            /*display: block;"*/
+            >
         </div>
 
         <div class="container">
