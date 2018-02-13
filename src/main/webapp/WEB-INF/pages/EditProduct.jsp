@@ -12,7 +12,7 @@
         <jsp:include page="components/productSelector.jsp"/>
     </div>
     <div class="w3-col s2 w3-margin-left">
-        <select class="w3-select" onchange="onProductChange()" id="fileterSelector">
+        <select class="w3-select" onchange="onProductChange()" id="fileterSelector" style="    margin-left: 30px;">
             <option value="false" selected>All Entries</option>
             <option value="true">Empty Entries</option>
         </select>
@@ -25,7 +25,7 @@
             </div>
 
             <div class="w3-col s1 w3-right  w3-margin-right">
-                <button class="w3-blue w3-button w3-right" onclick="addTranslationToProduct()">Add</button>
+                <button class="w3-indigo w3-button w3-right" onclick="addTranslationToProduct()">Add</button>
             </div>
             <div class="w3-col s4 w3-right w3-margin-right" id="PageKeySelector">
                 <jsp:include page="components/keySelector.jsp"/>
@@ -39,7 +39,7 @@
 
 <div class="w3-row">
   <div id="translationTable">
-      <%--<jsp:include page="components/productTranslationsTable.jsp"/>--%>
+      <jsp:include page="components/emptyTable.jsp"/>
   </div>
 
 </div>

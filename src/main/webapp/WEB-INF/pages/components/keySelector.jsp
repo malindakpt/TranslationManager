@@ -4,7 +4,7 @@
 <%@ page import="entity.TranslationEntity" %>
 
 
-<input id="searchKeyInput" type="text" name="myCountry" class="w3-input" placeholder="Search English Word">
+<input id="searchKeyInput" type="text" name="myCountry" class="w3-input" placeholder="Search English Word" style="    margin-left: -20px;">
 
 
 

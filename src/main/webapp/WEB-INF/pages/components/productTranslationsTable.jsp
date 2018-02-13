@@ -70,6 +70,10 @@
 </tr>
 <%
         }
+    }else{
+%>
+    <%--<jsp:include page="../components/emptyTable.jsp"/>--%>
+<%
     }
 %>
 
