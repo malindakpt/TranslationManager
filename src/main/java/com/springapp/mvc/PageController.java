@@ -23,6 +23,15 @@ class AddTranslationController {
 }
 
 @Controller
+@RequestMapping("/PageAllTranslations")
+class PageAllTranslationsController {
+	@RequestMapping(method = RequestMethod.POST)
+	public String printWelcome(ModelMap model) {
+		return "components/allTranslationsTable";
+	}
+}
+
+@Controller
 @RequestMapping("/PageKeySelector")
 class PageKeySelectorController {
 	@RequestMapping(method = RequestMethod.POST)
