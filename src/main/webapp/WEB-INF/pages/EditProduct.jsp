@@ -15,7 +15,7 @@
     <div class="w3-col s8  w3-right">
         <div class="w3-row">
             <div class="w3-col s1 w3-right">
-                <button class="w3-button w3-circle w3-red" onclick="showAddTranslation()">+</button>
+                <button class="w3-button w3-circle w3-red" onclick="showAddTranslation()"><b>+</b></button>
             </div>
             <div class="w3-col s1 w3-right  w3-margin-right">
                 <button class="w3-blue w3-button w3-right" onclick="addTranslationToProduct()">Add</button>
