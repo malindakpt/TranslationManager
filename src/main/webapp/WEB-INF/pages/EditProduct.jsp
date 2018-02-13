@@ -94,7 +94,7 @@
     }
     function addTranslationToProduct() {
         $.post('AddTranslationToProduct', {
-                enText: $('#searchKeyInput').val(),
+                enText: toUnicode($('#searchKeyInput').val()),
                 languageArr: [1, 2],
                 productId: $('#productSelector').val(),
                 sess: sess

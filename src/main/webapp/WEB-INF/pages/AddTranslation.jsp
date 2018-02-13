@@ -59,7 +59,7 @@
                 console.log("Add Translation");
                 if (result === "") {
                     $('#addTrnsModal').hide();
-                    getAndSetPage("PageKeySelector", "translationTable");
+                    getAndSetPage("PageKeySelector", "PageKeySelector");
                 } else {
                     alert(result);
                 }
