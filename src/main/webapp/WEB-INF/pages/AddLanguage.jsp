@@ -20,22 +20,22 @@
 <script>
 
     function addLanguage() {
-        $.post('AddLanguage', {
-                name: $('#name').val(),
-                sess: sess
-            },
-            function (result) {
-                console.log("Add language");
-                var resArr = result.split("##");
-                if (resArr[0] === "") {
-                    alert("Success");
-                } else {
-                    alert(resArr[1]);
-                }
-
-            }).fail(function () {
-                alert("Error");
-            }
-        );
+//        $.post('AddLanguage', {
+//                name: $('#name').val(),
+//                sess: sess
+//            },
+//            function (result) {
+//                console.log("Add language");
+//                var resArr = result.split("##");
+//                if (resArr[0] === "") {
+//                    alert("Success");
+//                } else {
+//                    alert(resArr[1]);
+//                }
+//
+//            }).fail(function () {
+//                alert("Error");
+//            }
+//        );
     }
 </script>
