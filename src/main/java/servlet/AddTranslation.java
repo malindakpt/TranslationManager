@@ -18,23 +18,24 @@ import java.io.PrintWriter;
 
 public class AddTranslation extends HttpServlet {
 
-
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         EntityManager entityManager = new EntityManager();
-        String languageId = request.getParameter("language");
+        String[] lanArr = request.getParameterValues("lanArr[]");
         String defKey = request.getParameter("defKey");
-        String translation = request.getParameter("translation");
+        String[] transArr = request.getParameterValues("transArr[]");
 
-        Language language = (Language) entityManager.getEntity(Language.class, "languageId", languageId);
-        TranslationEntity translationEntity = new TranslationEntity();
-        translationEntity.setLanguage(language);
-        translationEntity.setDefaultKey(defKey);
-        translationEntity.setLanguageTerm(translation);
-
-        entityManager.add(translationEntity);
+        int n = 0;
+        for( String lan : lanArr) {
+            Language language = (Language) entityManager.getEntity(Language.class, "languageId", lan);
+            TranslationEntity translationEntity = new TranslationEntity();
+            translationEntity.setLanguage(language);
+            translationEntity.setDefaultKey(defKey);
+            translationEntity.setLanguageTerm(transArr[n++]);
+            entityManager.add(translationEntity);
+        }
     }
 
     public void doGet(HttpServletRequest request,

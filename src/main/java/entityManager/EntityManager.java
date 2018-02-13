@@ -264,7 +264,7 @@ public class EntityManager {
         return null;
     }
 
-    public List<Entity> getProductLanguage(String productId, int languageId){
+    public List<Entity> getProductLanguageTranslations(String productId){
         List<Entity> entities;// = new ArrayList<Entity>();
         Session session = null;
         Transaction tx = null;
@@ -272,10 +272,10 @@ public class EntityManager {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            String hql = "FROM  ProductTranslation pt WHERE productId= :productId AND pt.translationEntity.language.languageId= :languageId ";
+            String hql = "FROM  ProductTranslation pt WHERE productId= :productId order by pt.localizationKey asc";
             Query query = session.createQuery(hql);
             query.setParameter("productId", productId);
-            query.setParameter("languageId", languageId);
+//            query.setParameter("languageId", languageId);
             entities = query.list();
             tx.commit();
 

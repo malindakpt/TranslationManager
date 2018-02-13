@@ -20,10 +20,11 @@
     </tr>
 <%
     String productId = request.getParameter("productId");
-    int languageId = Integer.parseInt(request.getParameter("languageId"));
+//    int languageId = Integer.parseInt(request.getParameter("languageId"));
     EntityManager entityManager = new EntityManager();
-    List<Entity> productTranslationList = entityManager.getProductLanguage(productId, languageId);
+    List<Entity> productTranslationList = entityManager.getProductLanguageTranslations(productId);
     if(productTranslationList != null){
+
     for( Entity entity: productTranslationList){
         ProductTranslation productTranslation = (ProductTranslation) entity;
 %>
@@ -35,7 +36,7 @@
         <%=productTranslation.getTranslationEntity().getDefaultKey()%>
     </td>
     <td>
-        <%=productTranslation.getTranslationEntity().getLanguageTerm()%>
+        <%=productTranslation.getTranslationEntity().getLanguage().getName()%> : <%=productTranslation.getTranslationEntity().getLanguageTerm()%>
     </td>
     <td>
         <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="removeProdTrans(this)">Remove</button>
