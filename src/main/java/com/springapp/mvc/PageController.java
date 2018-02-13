@@ -23,6 +23,15 @@ class AddTranslationController {
 }
 
 @Controller
+@RequestMapping("/PageKeySelector")
+class PageKeySelectorController {
+	@RequestMapping(method = RequestMethod.POST)
+	public String printWelcome(ModelMap model) {
+		return "components/keySelector";
+	}
+}
+
+@Controller
 @RequestMapping("/PageAddLanguage")
 class AddLanguageController {
 	@RequestMapping(method = RequestMethod.POST)

@@ -43,9 +43,9 @@
     function addTranslation() {
         var lanArr = [];
         var transArr = [];
-        $("#transList input[rel=translations]").each(function () {
+        $("#addTranslationWidget input[rel=translations]").each(function () {
             lanArr.push(this.id);
-            transArr.push(this.value);
+            transArr.push(toUnicode(this.value));
         });
         console.log(lanArr);
         console.log(transArr);
@@ -57,11 +57,11 @@
             },
             function (result) {
                 console.log("Add Translation");
-                var resArr = result.split("##");
-                if (resArr[0] === "") {
-                    alert("Success");
+                if (result === "") {
+                    $('#addTrnsModal').hide();
+                    getAndSetPage("PageKeySelector", "translationTable");
                 } else {
-                    alert(resArr[1]);
+                    alert(result);
                 }
 
             }).fail(function () {

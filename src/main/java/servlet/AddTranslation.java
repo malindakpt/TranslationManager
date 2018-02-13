@@ -4,6 +4,7 @@ package servlet; /**
 // Import required java libraries
 
 
+import entity.Entity;
 import entity.Language;
 import entity.TranslationEntity;
 import entity.User;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 public class AddTranslation extends HttpServlet {
 
@@ -27,14 +29,19 @@ public class AddTranslation extends HttpServlet {
         String defKey = request.getParameter("defKey");
         String[] transArr = request.getParameterValues("transArr[]");
 
-        int n = 0;
-        for( String lan : lanArr) {
-            Language language = (Language) entityManager.getEntity(Language.class, "languageId", lan);
-            TranslationEntity translationEntity = new TranslationEntity();
-            translationEntity.setLanguage(language);
-            translationEntity.setDefaultKey(defKey);
-            translationEntity.setLanguageTerm(transArr[n++]);
-            entityManager.add(translationEntity);
+        List<Entity> existList = entityManager.getEntity1(TranslationEntity.class, "defaultKey", defKey);
+        if(existList!= null && existList.size()>0 ){
+            out.write("Default key is already exist !");
+        } else {
+            int n = 0;
+            for (String lan : lanArr) {
+                Language language = (Language) entityManager.getEntity(Language.class, "languageId", lan);
+                TranslationEntity translationEntity = new TranslationEntity();
+                translationEntity.setLanguage(language);
+                translationEntity.setDefaultKey(defKey);
+                translationEntity.setLanguageTerm(transArr[n++]);
+                entityManager.add(translationEntity);
+            }
         }
     }
 

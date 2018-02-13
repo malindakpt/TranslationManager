@@ -15,12 +15,14 @@
     <div class="w3-col s8  w3-right">
         <div class="w3-row">
             <div class="w3-col s1 w3-right">
-                <button class="w3-button w3-circle w3-red" onclick="showAddTranslation()"><b>+</b></button>
+                <button class="w3-button w3-circle w3-red " onclick="showAddTranslation()" style="margin-left: 50px"><b>+</b></button>
+            </div>
+            <div class="w3-col s3 w3-right">
             </div>
             <div class="w3-col s1 w3-right  w3-margin-right">
                 <button class="w3-blue w3-button w3-right" onclick="addTranslationToProduct()">Add</button>
             </div>
-            <div class="w3-col s4 w3-right w3-margin-right">
+            <div class="w3-col s4 w3-right w3-margin-right" id="PageKeySelector">
                 <jsp:include page="components/keySelector.jsp"/>
             </div>
 
@@ -98,13 +100,10 @@
                 sess: sess
             },
             function (result) {
-                console.log("Add language");
-                var resArr = result.split("##");
-                if (resArr[0] === "") {
-                    alert("Success");
+                if (result === "") {
                     getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val()+"&languageId="+$('#languageSelector').val(), "translationTable");
                 } else {
-                    alert(resArr[1]);
+                    alert(result);
                 }
 
             }).fail(function () {

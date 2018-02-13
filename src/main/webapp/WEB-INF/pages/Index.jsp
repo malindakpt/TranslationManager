@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <title>Mubasher Trade</title>
-<meta charset="UTF-8">
+<%--<meta charset="UTF-8">--%>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/W3.css">
+<link rel="stylesheet" href="css/custom.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="js/jQuery.js"></script>
+<%@ page pageEncoding="UTF-8" %>
 <style>
     body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     .w3-row-padding img {margin-bottom: 12px}
@@ -20,26 +23,26 @@
 <body class="">
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-black">
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-indigo">
     <!-- Avatar image in top left corner -->
-    <%--<img src="/w3images/avatar_smoke.jpg" style="width:100%">--%>
+    <img src="img/logo1.png" style="width:100%" class="logo">
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageEditProduct')">
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
     </a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAddLanguage')">
-        <i class="fa fa-home w3-xxlarge"></i>
+        <i class="fa fa-plus-circle w3-xxlarge"></i>
         <p>ADD LANGUAGE</p>
     </a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAddTranslation')">
-        <i class="fa fa-user w3-xxlarge"></i>
-        <p>ADD TRANSLATION</p>
-    </a>
+    <%--<a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAddTranslation')">--%>
+        <%--<i class="fa fa-user w3-xxlarge"></i>--%>
+        <%--<p>ADD TRANSLATION</p>--%>
+    <%--</a>--%>
 
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo">
-        <i class="fa fa-envelope w3-xxlarge"></i>
-        <p>CONTACT</p>
-    </a>
+    <%--<a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo">--%>
+        <%--<i class="fa fa-envelope w3-xxlarge"></i>--%>
+        <%--<p>CONTACT</p>--%>
+    <%--</a>--%>
 </nav>
 
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
@@ -55,7 +58,7 @@
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
     <!-- Header/Home -->
-    <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <header class="w3-container w3-padding-32 w3-center w3-indigo" id="home">
         <h2 class="">Mub </h2>
         <%--<p>Photographer and Web Designer.</p>--%>
         <%--<img src="/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">--%>
@@ -168,6 +171,18 @@
                 busyOff();
             }
         );
+    }
+    function toUnicode(theString) {
+        var unicodeString = '';
+        for (var i=0; i < theString.length; i++) {
+            var theUnicode = theString.charCodeAt(i).toString(16).toUpperCase();
+            while (theUnicode.length < 4) {
+                theUnicode = '0' + theUnicode;
+            }
+            theUnicode = '\\u' + theUnicode;
+            unicodeString += theUnicode;
+        }
+        return unicodeString;
     }
     getAndSetPage('PageEditProduct');
 </script>

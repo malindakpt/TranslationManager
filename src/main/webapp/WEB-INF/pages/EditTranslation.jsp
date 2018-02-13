@@ -3,6 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="entity.Language" %>
 <%@ page import="entity.ProductTranslation" %>
+<%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
     EntityManager entityManager = new EntityManager();
@@ -28,7 +30,7 @@
             <%--<input id="defKey" class="w3-input" type="text" disabled value="">--%>
 
             <label><%=productTranslation.getTranslationEntity().getLanguage().getName()%></label>
-            <input rel="translations" id="transVal" class="w3-input" type="text" value="<%=productTranslation.getTranslationEntity().getLanguageTerm()%>">
+            <input rel="translations" id="transVal" class="w3-input" type="text" value="<%=StringEscapeUtils.unescapeJava(productTranslation.getTranslationEntity().getLanguageTerm())%>">
 
         </div>
 
@@ -42,7 +44,7 @@
 
         $.post('EditTranslation', {
                 transEntityID: <%=productTranslation.getTranslationEntity().getTranslationEntityId()%>,
-                translationVal: $('#transVal').val(),
+                translationVal: toUnicode($('#transVal').val()),
                 sess: sess
             },
             function (result) {
