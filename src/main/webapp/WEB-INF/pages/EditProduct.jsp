@@ -1,3 +1,8 @@
+
+<div id="editTranslationContainer">
+
+</div>
+
 <div class="w3-row">
     <div class="w3-col s3">
         <jsp:include page="components/productSelector.jsp"/>
@@ -31,8 +36,13 @@
     function onLanguageChange() {
         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
     }
+    function getEditWidget(ele) {
+        console.log("getEditWidget");
+        getAndSetPage("PageEditTranslation?prodTransId="+ele.id, "editTranslationContainer");
+    }
     function editProdTrans(ele) {
-        $.post('RemoveTranslationToProduct', {
+
+        $.post('PageEditTranslation', {
                 id: ele.id,
                 sess: sess
             },

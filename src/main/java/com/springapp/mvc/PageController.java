@@ -41,6 +41,16 @@ class EditProductController {
 }
 
 @Controller
+@RequestMapping("/PageEditTranslation")
+class PageEditTranslationController {
+	@RequestMapping(method = RequestMethod.POST)
+	public String printWelcome(ModelMap model) {
+		return "EditTranslation";
+	}
+}
+
+
+@Controller
 @RequestMapping("/PageProTransTable")
 class PageProTransTableController {
 	@RequestMapping(method = RequestMethod.POST)

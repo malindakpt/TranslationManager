@@ -16,6 +16,17 @@
 		<url-pattern>/AddLanguage</url-pattern>
 	</servlet-mapping>
 
+
+	<servlet>
+		<servlet-name>EditTranslation</servlet-name>
+		<servlet-class>servlet.EditTranslation</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditTranslation</servlet-name>
+		<url-pattern>/EditTranslation</url-pattern>
+	</servlet-mapping>
+
+
 	<servlet>
 		<servlet-name>AddTranslation</servlet-name>
 		<servlet-class>servlet.AddTranslation</servlet-class>

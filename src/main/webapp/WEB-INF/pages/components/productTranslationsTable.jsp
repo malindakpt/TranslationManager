@@ -42,7 +42,7 @@
         <%=productTranslation.getTranslationEntity().getLanguage().getName()%> : <%=productTranslation.getTranslationEntity().getLanguageTerm()%>
     </td>
     <td>
-        <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="editProdTrans(this)">Edit</button>
+        <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="getEditWidget(this)">Edit</button>
     </td>
     <td>
         <button id="<%= productTranslation.getProductTranslationId()%>" class="w3-button w3-tiny " onclick="removeProdTrans(this)">Remove</button>
