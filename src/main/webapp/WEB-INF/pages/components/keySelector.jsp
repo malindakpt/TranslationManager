@@ -111,9 +111,11 @@
     EntityManager entityManager = new EntityManager();
     List<Entity> entities = entityManager.getEntity1(TranslationEntity.class, "languageId", "1");
     String transList = "[\"";
-    for( Entity entity: entities){
-        TranslationEntity translation = (TranslationEntity)entity;
-        transList = transList  + translation.getLanguageTerm()+"\",\"";
+    if(entities != null ){
+        for( Entity entity: entities){
+            TranslationEntity translation = (TranslationEntity)entity;
+            transList = transList  + translation.getLanguageTerm()+"\",\"";
+        }
     }
     transList = transList  + "\"]";
     System.out.println(transList);
