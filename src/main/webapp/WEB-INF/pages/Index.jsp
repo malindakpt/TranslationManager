@@ -1,3 +1,6 @@
+<%@ page import="entity.User" %>
+<%@ page import="entityManager.EntityManager" %>
+<%@ page import="entity.Entity" %>
 <!DOCTYPE html>
 <html>
 <title>Mubasher Trade</title>
@@ -21,6 +24,24 @@
     /* Remove margins from "page content" on small screens */
     @media only screen and (max-width: 600px) {#main {margin-left: 0}}
 </style>
+
+<%
+    EntityManager entityManager = new EntityManager();
+    String sessionId = request.getParameter("sess");
+    User user = (User) entityManager.getFirstEntity1(User.class,"sessionId",sessionId);
+
+    if(user==null) {
+        response.sendRedirect("PageLogin");
+    }else{
+%>
+
+<script>
+    var sess = <%=sessionId%>;
+
+</script>
+
+
+
 <body class="">
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
@@ -39,7 +60,7 @@
         <i class="fa fa-bars w3-xxlarge"></i>
         <p>ALL ENTRIES</p>
     </a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAllTranslations')">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAddUser')">
         <i class="fa fa-user-plus w3-xxlarge"></i>
         <p>ADD USER</p>
     </a>
@@ -65,9 +86,8 @@
     <!-- Header/Home -->
     <header class="w3-container w3-padding-32 w3-center w3-indigo" id="home">
         <span><h3>Mubasher Trade Language Portal</h3> </span>
-        <span>Logged in : Malinda Kumarasinghe</span>
+        <span>Logged in : <%=user.getName()%></span>
         <span class="w3-right w3-margin-right"><i class="fa fa-power-off w3-xxlarge"></i></span>
-        <%--<img src="/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">--%>
     </header>
 
     <!-- About Section -->
@@ -179,3 +199,7 @@
     }
     getAndSetPage('PageEditProduct');
 </script>
+
+
+
+<% } %>

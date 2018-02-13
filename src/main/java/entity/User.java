@@ -1,5 +1,7 @@
 package entity;
 
+import AppConfig.DBConfig;
+
 import javax.persistence.*;
 
 /**
@@ -7,11 +9,10 @@ import javax.persistence.*;
  */
 
 @javax.persistence.Entity
-@Table(name = "user", catalog = "school", uniqueConstraints = {
+@Table(name = "user", catalog = DBConfig.DB_NAME, uniqueConstraints = {
         @UniqueConstraint(columnNames = "userId")})
 public class User extends Entity {
     private int userId;
-    private int memberId;
     private String name;
     private String userName;
     private String password;
@@ -71,11 +72,4 @@ public class User extends Entity {
         this.sessionId = sessionId;
     }
 
-    @Column(name = "memberId", nullable = false, length = 40)
-    public int getMemberId() {
-        return memberId;
-    }
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
-    }
 }

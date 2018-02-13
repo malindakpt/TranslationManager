@@ -126,6 +126,36 @@ public class EntityManager {
         return null;
     }
 
+    public Entity getFirstEntity1(Class entity,String col1, String val1){
+        List<Entity> entities;// = new ArrayList<Entity>();
+        Session session = null;
+        Transaction tx = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            String hql = "FROM "+entity.getSimpleName()+" WHERE "+col1+"= :val1";
+            Query query = session.createQuery(hql);
+            query.setParameter("val1", val1);
+            entities = query.list();
+
+            tx.commit();
+
+            if(entities.size()>0){
+                return entities.get(0);
+            }else{
+                return null;
+            }
+
+        } catch (Exception e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
     public List<Entity> getEntity1(Class entity,String col1, String val1){
         List<Entity> entities;// = new ArrayList<Entity>();
         Session session = null;

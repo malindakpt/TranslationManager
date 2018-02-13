@@ -26,7 +26,7 @@ public class Login extends HttpServlet {
             String userName = request.getParameter("userName");
             String password = request.getParameter("password");
 
-            User user = (User) entityManager.getEntity2(User.class,"userName",userName, "password",password);
+            User user = (User) entityManager.getFirstEntity2(User.class,"userName",userName, "password",password);
 
             if(user!=null) {
                 String sessionId = user.getUserId()+""+Calendar.getInstance().getTimeInMillis();
