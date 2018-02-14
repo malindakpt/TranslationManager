@@ -4,10 +4,7 @@ package servlet; /**
 // Import required java libraries
 
 
-import entity.Product;
-import entity.ProductTranslation;
-import entity.TranslationEntity;
-import entity.User;
+import entity.*;
 import entityManager.EntityManager;
 import util.Constants;
 import util.Helper;
@@ -36,7 +33,10 @@ public class RemoveTranslationToProduct extends HttpServlet {
         }
 
         String key = request.getParameter("key");
-        entityManager.delete(ProductTranslation.class, "localizationKey", key);
+        String productId = request.getParameter("productId");
+        Product product = (Product) entityManager.getEntity(Product.class,"productId",productId);
+        entityManager.delete2(ProductTranslation.class, "localizationKey", key, "productId", productId);
+        entityManager.add(new LogRecord("Removed Translation of "+product.getProductName()+":"+ key , user));
     }
 
     public void doGet(HttpServletRequest request,

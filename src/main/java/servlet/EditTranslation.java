@@ -5,6 +5,7 @@ package servlet; /**
 
 
 import entity.Language;
+import entity.LogRecord;
 import entity.TranslationEntity;
 import entity.User;
 import entityManager.EntityManager;
@@ -38,8 +39,10 @@ public class EditTranslation extends HttpServlet {
         String translationVal = request.getParameter("translationVal");
 
         TranslationEntity translationEntity = (TranslationEntity) entityManager.getEntity(TranslationEntity.class, "translationEntityId", transEntityID);
+        String oldVal = translationEntity.getLanguageTerm();
         translationEntity.setLanguageTerm(translationVal);
         entityManager.update(translationEntity);
+        entityManager.add(new LogRecord("TranslationEntity "+translationEntity.getDefaultKey()+":"+oldVal+" is edited to: "+ translationEntity.getDefaultKey(), user));
     }
 
     public void doGet(HttpServletRequest request,

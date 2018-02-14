@@ -63,6 +63,7 @@ public class AddTranslationToProduct extends HttpServlet {
                         productTranslation.setLocalizationKey(defKey);
                         productTranslation.setTranslationEntity(translationEntity);
                         entityManager.add(productTranslation);
+                        entityManager.add(new LogRecord("ProductTranslationEntity Added:"+ productTranslation.getLocalizationKey(), user));
                     }
                 } else {
                     out.write("Translation already added");

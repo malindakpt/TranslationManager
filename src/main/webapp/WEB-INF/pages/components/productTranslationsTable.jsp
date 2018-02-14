@@ -10,9 +10,9 @@
        <th>
            Localization Key
        </th>
-        <th>
-            Default Key
-        </th>
+        <%--<th>--%>
+            <%--Default Key--%>
+        <%--</th>--%>
 
         <th>
             Language
@@ -45,9 +45,9 @@
     <td>
         <%=productTranslation.getLocalizationKey()%>
     </td>
-    <td>
-        <%=productTranslation.getTranslationEntity().getDefaultKey()%>
-    </td>
+    <%--<td>--%>
+        <%--<%=productTranslation.getTranslationEntity().getDefaultKey()%>--%>
+    <%--</td>--%>
     <td>
         <%=productTranslation.getTranslationEntity().getLanguage().getName()%>
     </td>

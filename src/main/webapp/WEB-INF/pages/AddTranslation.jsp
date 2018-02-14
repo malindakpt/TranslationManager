@@ -22,7 +22,7 @@
             <label>Product Name</label><br>
             <label><b><%=product.getProductName()%></b></label><br><br>
 
-            <label>Default Key</label>
+            <label>Localization Key</label>
             <input id="defKey" class="w3-input" type="text" >
 
             <%

@@ -43,6 +43,24 @@ public class EntityManager {
             session.close();
         }
     }
+    public void delete2(Class entity,String colName1, String value1,String colName2, String value2){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("delete "+entity.getSimpleName()+" where "+colName1+" = :value1 AND "+colName2+" = :value2");
+            query.setParameter("value1", value1);
+            query.setParameter("value2", value2);
+            query.executeUpdate();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 
     public void update(Entity entity){
         Session session = HibernateUtil.getSessionFactory().openSession();

@@ -122,6 +122,7 @@
     function removeProdTrans(ele) {
         $.post('RemoveTranslationToProduct', {
                 key: ele.dataset.key,
+                productId: $('#productSelector').val(),
                 sess: sess
             },
             function (result) {
