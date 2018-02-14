@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.List;
 
 public class AddTranslationToProduct extends HttpServlet {
@@ -63,7 +64,7 @@ public class AddTranslationToProduct extends HttpServlet {
                         productTranslation.setLocalizationKey(defKey);
                         productTranslation.setTranslationEntity(translationEntity);
                         entityManager.add(productTranslation);
-                        entityManager.add(new LogRecord("ProductTranslationEntity Added:"+ productTranslation.getLocalizationKey(), user));
+                        entityManager.add(new LogRecord("ProductTranslationEntity Added:"+ productTranslation.getLocalizationKey(), user, Calendar.getInstance().getTime()));
                     }
                 } else {
                     out.write("Translation already added");

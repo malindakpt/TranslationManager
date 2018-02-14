@@ -286,6 +286,28 @@ public class EntityManager {
         return null;
     }
 
+    public static List<Entity> getOrderedEntities(Class entity, String orderedAttr, boolean isAsc){
+        List<Entity> entities;// = new ArrayList<Entity>();
+        Session session = null;
+        Transaction tx = null;
+        String order = isAsc ? "asc" : "desc";
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            String hql = "FROM "+entity.getSimpleName()+" order by "+orderedAttr+" " + order;
+            Query query = session.createQuery(hql);
+            entities = query.list();
+            tx.commit();
+            return entities;
+        } catch (Exception e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
     public static List<HashMap> getSQLQuery(int examId, int schoolId){
         List<HashMap> entities;
         Session session = null;

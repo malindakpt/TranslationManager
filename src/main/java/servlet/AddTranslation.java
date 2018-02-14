@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.List;
 
 public class AddTranslation extends HttpServlet {
@@ -49,7 +50,7 @@ public class AddTranslation extends HttpServlet {
                 translationEntity.setDefaultKey(defKey);
                 translationEntity.setLanguageTerm(transArr[n++]);
                 entityManager.add(translationEntity);
-                entityManager.add(new LogRecord("TranslationEntity Added:"+ translationEntity.getDefaultKey(), user));
+                entityManager.add(new LogRecord("Translation Added : "+ translationEntity.getDefaultKey(), user, Calendar.getInstance().getTime()));
 
                 Product product = (Product) entityManager.getEntity(Product.class, "productId", productId);
                 ProductTranslation productTranslation = new ProductTranslation();
@@ -57,7 +58,7 @@ public class AddTranslation extends HttpServlet {
                 productTranslation.setLocalizationKey(defKey);
                 productTranslation.setTranslationEntity(translationEntity);
                 entityManager.add(productTranslation);
-                entityManager.add(new LogRecord("ProductTranslationEntity Added:"+ translationEntity.getDefaultKey(), user));
+                entityManager.add(new LogRecord("ProductTranslation Added : "+ translationEntity.getDefaultKey(), user, Calendar.getInstance().getTime()));
             }
 
 

@@ -112,3 +112,12 @@ class PageProTransTableController {
 		return "components/productTranslationsTable";
 	}
 }
+
+@Controller
+@RequestMapping("/PageLogViewer")
+class PageLogViewerController {
+	@RequestMapping(method = RequestMethod.POST)
+	public String printWelcome(ModelMap model) {
+		return "LogViewer";
+	}
+}

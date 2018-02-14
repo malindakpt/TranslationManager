@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 
 public class AddLanguage extends HttpServlet {
 
@@ -39,7 +40,7 @@ public class AddLanguage extends HttpServlet {
         language.setName(name);
         entityManager.add(language);
 
-        entityManager.add(new LogRecord("Language Added:"+ language.getName(), user));
+        entityManager.add(new LogRecord("Language Added:"+ language.getName(), user, Calendar.getInstance().getTime()));
 
     }
 
