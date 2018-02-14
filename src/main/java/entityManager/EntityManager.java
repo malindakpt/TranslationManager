@@ -308,20 +308,20 @@ public class EntityManager {
         }
         return null;
     }
-    public static List<HashMap> getSQLQuery(int examId, int schoolId){
-        List<HashMap> entities;
+    public List<Object> searchKeys(String searchKey){
+        searchKey = searchKey.replace("\\", "\\\\\\\\");
+        List<Object> entities = null;
         Session session = null;
         Transaction tx = null;
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            String sql = "SELECT studentId,sum(marks) as total FROM assesment WHERE examId= :examId and schoolId= :schoolId  group by studentId order by total desc";//" WHERE examId=1 group by studentId order by total desc";
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            query.setParameter("examId", examId);
-            query.setParameter("schoolId", schoolId);
+
+            String hql="SELECT emp.languageTerm from TranslationEntity emp WHERE emp.languageTerm like '%"+searchKey+"%'";
+            Query query=session.createQuery(hql);
             entities = query.list();
+
             tx.commit();
             return entities;
         } catch (Exception e) {

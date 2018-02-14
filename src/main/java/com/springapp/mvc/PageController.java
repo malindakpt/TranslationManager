@@ -103,6 +103,15 @@ class PageEditTranslationController {
 	}
 }
 
+@Controller
+@RequestMapping("/PageSearchKey")
+class PageSearchKeyController {
+	@RequestMapping(method = RequestMethod.POST)
+	public String printWelcome(ModelMap model) {
+		return "components/searchKey";
+	}
+}
+
 
 @Controller
 @RequestMapping("/PageProTransTable")

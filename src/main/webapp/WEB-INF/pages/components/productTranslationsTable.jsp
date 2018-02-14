@@ -10,11 +10,7 @@
        <th>
            Localization Key
        </th>
-        <%--<th>--%>
-            <%--Default Key--%>
-        <%--</th>--%>
-
-        <th>
+         <th>
             Language
         </th>
         <th>
