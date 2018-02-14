@@ -12,16 +12,19 @@
     </div>
 
     <div class="w3-col s5 w3-right ">
-        <div class="w3-row w3-panel w3-light-grey w3-leftbar w3-border-grey w3-padding">
-            <div class="w3-col s5 w3-right ">
-                <button class="w3-indigo w3-button w3-right" onclick="addTranslationToProduct()"><i class="fa fa-outdent"></i>  Add To Product</button>
-            </div>
-            <div class="w3-col s3 w3-right w3-margin-left " id="PageKeySelector">
-                <jsp:include page="components/keySelector.jsp"/>
-                <input id="searchInputValue" onkeyup="searchKey()"/>
-            </div>
-            <div  class="w3-col s6" id="searchResultContainer"></div>
-        </div>
+        <%--<div class="w3-row w3-panel w3-light-grey w3-leftbar w3-border-grey w3-padding">--%>
+            <%--<div class="w3-col s5 w3-right ">--%>
+                <%--<button class="w3-indigo w3-button w3-right" onclick="addTranslationToProduct()"><i class="fa fa-outdent"></i>  Add To Product</button>--%>
+            <%--</div>--%>
+            <%--<div class="w3-col s3 w3-right w3-margin-left " id="PageKeySelector">--%>
+                <%--<jsp:include page="components/keySelector.jsp"/>--%>
+                <input class="w3-input" id="searchInputValue" onkeyup="searchKey()" placeholder="Search laguage terms.."/>
+                <div id="searchResultContainer"></div>
+            <%--</div>--%>
+
+        <%--</div>--%>
+
+
 
     </div>
 
@@ -54,10 +57,8 @@
         </div>
     </div>
 
-
-
-
-<br><br>
+<br>
+<br>
 
 <div class="w3-row">
   <div id="translationTable">
@@ -71,9 +72,13 @@
 <script>
 
     function searchKey() {
-        console.log("Sent -> "+$('#searchInputValue').val());
-        console.log("Sent -> "+toUnicode($('#searchInputValue').val()));
-        getAndSetPage("PageSearchKey?key=" + toUnicode($('#searchInputValue').val()), "searchResultContainer");
+        var key = $('#searchInputValue').val();
+        if(key!="") {
+            console.log(key);
+            getAndSetPage("PageSearchKey?key=" + toUnicode($('#searchInputValue').val()), "searchResultContainer");
+        } else{
+            $('#searchResultContainer').html("");
+        }
     }
     function downloadFile() {
         if($('#languageSelector').val() != "-1") {
