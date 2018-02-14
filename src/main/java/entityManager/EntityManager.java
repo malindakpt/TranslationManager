@@ -308,17 +308,25 @@ public class EntityManager {
         }
         return null;
     }
-    public List<Object> searchKeys(String searchKey){
-        searchKey = searchKey.replace("\\", "\\\\\\\\");
-        List<Object> entities = null;
+    public List<Object[]> searchKeys(String searchKey, boolean isLan){
+
+        List<Object[]> entities = null;
         Session session = null;
         Transaction tx = null;
+        String column = null;
+        String selectCol = null;
+        if(isLan){
+            searchKey = searchKey.replace("\\", "\\\\\\\\");
+            column = "emp.languageTerm";
+        }else{
+            column = "emp.defaultKey";
+        }
 
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
 
-            String hql="SELECT emp.languageTerm from TranslationEntity emp WHERE emp.languageTerm like '%"+searchKey+"%' AND languageId=1";
+            String hql="SELECT emp.languageTerm, emp.defaultKey  from TranslationEntity emp WHERE "+column+" like '%"+searchKey+"%' AND languageId=1";
             Query query=session.createQuery(hql);
             entities = query.list();
 

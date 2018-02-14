@@ -20,11 +20,10 @@
                 <%--<jsp:include page="components/keySelector.jsp"/>--%>
             <div class="w3-row w3-right">
                 <label>Loc. Keys</label>
+                <input id="idKey" class="w3-radio" type="radio" name="gender" value="key">
 
-                <input class="w3-radio" type="radio" name="gender" value="key">
                 <label>English Words</label>
-
-                <input class="w3-radio" type="radio" name="gender" value="lan" checked>
+                <input id="idLan" class="w3-radio" type="radio" name="gender" value="lan" checked>
             </div>
             <div>
                 <input class="w3-input w3-margin-bottom" id="searchInputValue" onfocus="showSearch()" onblur="hideTimeout()" onkeyup="searchKey()" placeholder="Search localization keys or English terms"/>
@@ -97,10 +96,16 @@
 
     function searchKey() {
         var key = $('#searchInputValue').val();
+        var searchKey;
         if(key!="") {
             console.log(key);
+            if($('#idKey').is(':checked')){
+                searchKey = key;
+            }else{
+                searchKey = toUnicode(key);
+            }
             $('#searchResultContainer').show()
-            getAndSetPage("PageSearchKey?key=" + toUnicode($('#searchInputValue').val()), "searchResultContainer");
+            getAndSetPage("PageSearchKey?key=" +  searchKey+"&lan=" + $('#idLan').is(':checked'), "searchResultContainer");
         } else{
             $('#searchResultContainer').hide();
         }

@@ -24,9 +24,6 @@ public class AddTranslationToProduct extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
 
-
-
-
         EntityManager entityManager = new EntityManager();
         PrintWriter out = response.getWriter();
 
