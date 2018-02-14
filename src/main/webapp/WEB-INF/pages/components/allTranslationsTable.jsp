@@ -18,7 +18,7 @@
             Default Key
         </th>
         <th>
-            Lnaguage
+            Language
         </th>
         <th>
             Language Term

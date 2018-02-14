@@ -6,8 +6,8 @@
 <div id="addTranslationWidget">
     <%--<jsp:include page="AddTranslation.jsp"/>--%>
 </div>
-<div class="w3-row w3-border-bottom w3-padding-16" >
-    <div class="w3-col s3 w3-padding">
+<div class="w3-row w3-bottombar w3-border-indigo " >
+    <div class="w3-col s3  w3-margin-top">
         <button class="w3-indigo w3-button" onclick="showAddTranslation()" ><i class="fa fa-plus-circle"></i> Add New Translation</button>
     </div>
 
@@ -24,15 +24,12 @@
     </div>
 
 </div>
-<br>
-
-
 <div class="w3-row">
 
 
-    <div class="w3-col s7 w3-panel ">
+    <div class="w3-col s7 w3-margin-top">
         <div class="w3-row">
-            <div class="w3-col s3">
+            <div class="w3-col s4">
                 <jsp:include page="components/productSelector.jsp"/>
             </div>
             <div class="w3-col s3">
@@ -87,7 +84,7 @@
             getAndSetPage("PageAddTranslation?productId=" + productId, "addTranslationWidget");
 
         } else{
-            alert("Please select a product");
+            swal({text: "Please select a product", icon: "error", button: "OK", });
         }
     }
     function onProductChange() {
@@ -107,10 +104,11 @@
             function (result) {
                 console.log("Response received");
                 if (result === "") {
-                    alert("Success");
+                    swal({text: "Translation Edited !", icon: "success", button: "OK", });
                     getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+
                 } else {
-                    alert(result);
+                    swal({text: result, icon: "error", button: "OK", });
                 }
 
             }).fail(function () {

@@ -53,10 +53,10 @@
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
     </a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAddLanguage')">
-        <i class="fa fa-plus-circle w3-xxlarge"></i>
-        <p>ADD LANGUAGE</p>
-    </a>
+    <%--<a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAddLanguage')">--%>
+        <%--<i class="fa fa-plus-circle w3-xxlarge"></i>--%>
+        <%--<p>ADD LANGUAGE</p>--%>
+    <%--</a>--%>
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAllTranslations')">
         <i class="fa fa-bars w3-xxlarge"></i>
         <p>ALL ENTRIES</p>
@@ -88,7 +88,7 @@
     </header>
 
     <!-- About Section -->
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="about">
 
             <div id="home-middle">
 
