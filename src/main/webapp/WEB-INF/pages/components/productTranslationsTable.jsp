@@ -19,8 +19,6 @@
         </th>
         <th>
             Translation
-            <button class="w3-button w3-green w3-small w3-right " onclick="downloadFile('English')">Download EN</button>
-            <button class="w3-button w3-green w3-small w3-right w3-margin-right"  onclick="downloadFile('Arabic')">Download AR</button>
         </th>
 
         <th>

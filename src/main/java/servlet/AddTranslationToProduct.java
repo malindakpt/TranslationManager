@@ -37,8 +37,8 @@ public class AddTranslationToProduct extends HttpServlet {
             TranslationEntity translation = (TranslationEntity) entityManager.getFirstEntity2(TranslationEntity.class, "languageTerm", enText, "languageId", "1");
             if (translation != null) {
 
-                ProductTranslation productTranslation = (ProductTranslation) entityManager.getFirstEntity1(ProductTranslation.class, "localizationKey", translation.getDefaultKey());
-                if(productTranslation == null) {
+                ProductTranslation productTranslation = (ProductTranslation) entityManager.getFirstEntity2(ProductTranslation.class, "localizationKey", translation.getDefaultKey(),"productId", productId);
+                    if(productTranslation == null) {
 
                     String defKey = translation.getDefaultKey();
                     for (String lanId : languageArr) {

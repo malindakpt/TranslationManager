@@ -68,15 +68,18 @@
 
 <script>
     function downloadFile() {
-        console.log("asdasd");
-        var lan = $('#languageSelector  option:selected').text();
-        var str = "";
-        $("#productTransTable span[rel=" + lan + "]").each(function () {
-            str = str +(this.dataset.key+" : '"+this.innerText+"',\n");
-        });
-        var filename = "asd";
-        var blob = new Blob([str], {type: "text/plain;charset=utf-8"});
-        saveAs(blob, lan+".txt");
+        if($('#languageSelector').val() != "-1") {
+            var lan = $('#languageSelector  option:selected').text();
+            var str = "export const EN = {\n";
+            $("#productTransTable span[rel=" + lan + "]").each(function () {
+                str = str + ("\t"+this.dataset.key + " : '" + this.innerText + "',\n");
+            });
+            str = str + "\n}";
+            var blob = new Blob([str], {type: "text/plain;charset=utf-8"});
+            saveAs(blob, lan + ".ts");
+        } else {
+            swal({text: "Select a language", icon: "error", button: "OK", });
+        }
     }
     function showAddTranslation() {
         var productId = $('#productSelector').val();
@@ -112,7 +115,7 @@
                 }
 
             }).fail(function () {
-                alert("Error");
+                swal({text: "Error", icon: "error", button: "OK", });
             }
         );
     }
@@ -124,20 +127,20 @@
             function (result) {
                 console.log("Response received");
                 if (result === "") {
-                    alert("Success");
                     getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+                    swal({text: "Translation removed from product", icon: "success", button: "OK", });
                 } else {
-                    alert(result);
+                    swal({text: result, icon: "error", button: "OK", });
                 }
 
             }).fail(function () {
-                alert("Error");
+            swal({text: "Error", icon: "error", button: "OK", });
             }
         );
     }
     function addTranslationToProduct() {
         if($('#productSelector').val() < 0){
-            alert("Select a product");
+            swal({text: "Please select a product", icon: "error", button: "OK", });
         } else {
             $.post('AddTranslationToProduct', {
                     enText: toUnicode($('#searchKeyInput').val()),
@@ -149,11 +152,11 @@
                     if (result === "") {
                         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val() + "&languageId=" + $('#languageSelector').val(), "translationTable");
                     } else {
-                        alert(result);
+                        swal({text: result, icon: "error", button: "OK", });
                     }
 
                 }).fail(function () {
-                    alert("Error");
+                    swal({text: "Error", icon: "error", button: "OK", });
                 }
             );
         }
