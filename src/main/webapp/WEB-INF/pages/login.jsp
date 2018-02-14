@@ -134,12 +134,13 @@
 <div id="id01" class="modal">
 
     <div class="modal-content animate" style="max-width: 388px;">
-        <div class="w3-container w3-indigo">
-            <h4>Mubasher Trade Language Portal</h4>
+        <div class="w3-container w3-indigo" style="padding: 10px;">
+            <div  align="center" style="font-size: 30px">MubasherTrade</div>
+            <div  align="center" style="font-size: 20px">Language Portal</div>
         </div>
         <div>
             <img src="img/logo2.png" style="
-            width: 200px;
+            width: 217px;
             height: 90px;
             margin-left: 76px;
             margin-top: 32px; ">
@@ -157,8 +158,9 @@
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
+            <%--<button type="button" onclick="" class="cancelbtn">Cancel</button>--%>
+            <%--<span class="psw">Forgot <a href="#">password?</a></span>--%>
+            <span align="center" style="font-size: 11px;float: right; margin: -7px;">2018 MubasherTrade All Rights Reserved</span>
         </div>
     </div>
 </div>

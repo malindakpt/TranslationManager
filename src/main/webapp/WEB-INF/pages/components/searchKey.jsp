@@ -19,7 +19,7 @@
             String languageTerm = (String) entities.get(y)[0];
             String languageKey = (String) entities.get(y)[1];
     %>
-    <div><button data-txt="<%=StringEscapeUtils.unescapeJava(languageTerm)%>" class="w3-button w3-blue" style="width: 100%;" onclick="addTranslationToProduct(this)"><%=languageKey+": "+StringEscapeUtils.unescapeJava(languageTerm)%></button></div>
+    <div><button data-txt="<%=StringEscapeUtils.unescapeJava(languageTerm)%>" class="w3-button w3-light-blue" style="width: 100%;text-align: left;" onclick="addTranslationToProduct(this)"><%=languageKey+": "+StringEscapeUtils.unescapeJava(languageTerm)%></button></div>
     <%
         }
 

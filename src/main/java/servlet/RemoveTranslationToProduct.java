@@ -37,7 +37,7 @@ public class RemoveTranslationToProduct extends HttpServlet {
         String productId = request.getParameter("productId");
         Product product = (Product) entityManager.getEntity(Product.class,"productId",productId);
         entityManager.delete2(ProductTranslation.class, "localizationKey", key, "productId", productId);
-        entityManager.add(new LogRecord("Removed Translation of "+product.getProductName()+":"+ key , user, Calendar.getInstance().getTime()));
+        entityManager.add(new LogRecord("Removed Trans " + key + " of "+product.getProductName() , user, Calendar.getInstance().getTime()));
     }
 
     public void doGet(HttpServletRequest request,

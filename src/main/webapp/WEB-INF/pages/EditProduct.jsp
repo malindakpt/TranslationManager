@@ -196,7 +196,7 @@
                 function (result) {
                     if (result === "") {
                         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val() + "&languageId=" + $('#languageSelector').val(), "translationTable");
-                        swal({text: "Translation added to product", icon: "sucess", button: "OK", });
+                        swal({text: "Translation added to product", icon: "success", button: "OK", });
                     } else {
                         swal({text: result, icon: "error", button: "OK", });
                     }

@@ -123,16 +123,16 @@
     <!-- Footer -->
     <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge" style="position: fixed;  bottom: -44px;  right: 27px;">
         <div class="w3-row">
-            <i class="fa fa-facebook-official w3-hover-opacity w3-right"></i>
-            <i class="fa fa-twitter w3-hover-opacity w3-right"></i>
-            <i class="fa fa-linkedin w3-hover-opacity w3-right"></i>
+            <%--<i class="fa fa-facebook-official w3-hover-opacity w3-right"></i>--%>
+            <%--<i class="fa fa-twitter w3-hover-opacity w3-right"></i>--%>
+            <%--<i class="fa fa-linkedin w3-hover-opacity w3-right"></i>--%>
 
         </div>
         <div class="w3-row">
             <span class="w3-medium w3-right">Powered by </span>
         </div>
         <div class="w3-row">
-            <span class="w3-medium w3-right">Mubasher Trade 2018</span>
+            <span class="w3-medium w3-right">MubasherTrade 2018</span>
         </div>
 
 

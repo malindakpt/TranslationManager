@@ -3,9 +3,7 @@
         <th>
             Localization Key
         </th>
-        <th>
-            Default Key
-        </th>
+
 
         <th>
             Language
@@ -24,7 +22,7 @@
 
     %>
     <tr>
-        <td></td> <td></td> <td></td> <td></td><td></td>
+        <td></td> <td></td> <td></td> <td></td>
     </tr>
     <%
         }
