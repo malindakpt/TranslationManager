@@ -84,14 +84,6 @@
     function getEditWidget(ele) {
         getAndSetPage("PageEditTranslation?type=1&prodTransId="+ele.id, "editTranslationContainer");
     }
-    function downloadFile(lan) {
-        var str = "";
-        $("#productTransTable span[rel=" + lan + "]").each(function () {
-           str = str +(this.dataset.key+" : '"+this.innerText+"',\n");
-        });
-        var filename = "asd";
-        var blob = new Blob([str], {type: "text/plain;charset=utf-8"});
-        saveAs(blob, lan+".txt");
-    }
+
 
 </script>

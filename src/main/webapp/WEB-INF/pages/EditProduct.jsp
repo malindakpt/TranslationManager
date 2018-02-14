@@ -6,37 +6,53 @@
 <div id="addTranslationWidget">
     <%--<jsp:include page="AddTranslation.jsp"/>--%>
 </div>
-<div class="w3-panel w3-leftbar w3-rightbar  w3-border-indigo w3-border w3-padding-16" >
-    <div class="w3-col s3">
-        <button class="w3-indigo w3-button" onclick="showAddTranslation()" >Add New Translation</button>
+<div class="w3-row w3-border-bottom w3-padding-16" >
+    <div class="w3-col s3 w3-padding">
+        <button class="w3-indigo w3-button" onclick="showAddTranslation()" ><i class="fa fa-plus-circle"></i> Add New Translation</button>
     </div>
 
-    <div class="w3-col s2 w3-right ">
-        <button class="w3-indigo w3-button w3-right" onclick="addTranslationToProduct()">Add To Product</button>
+    <div class="w3-col s5 w3-right ">
+        <div class="w3-row w3-panel w3-light-grey w3-leftbar w3-border-grey w3-padding">
+            <div class="w3-col s5 w3-right ">
+                <button class="w3-indigo w3-button w3-right" onclick="addTranslationToProduct()"><i class="fa fa-outdent"></i>  Add To Product</button>
+            </div>
+            <div class="w3-col s6 w3-right w3-margin-left " id="PageKeySelector">
+                <jsp:include page="components/keySelector.jsp"/>
+            </div>
+        </div>
+
     </div>
-    <div class="w3-col s3 w3-right " id="PageKeySelector">
-        <jsp:include page="components/keySelector.jsp"/>
-    </div>
+
 </div>
-
 <br>
-<div class="w3-panel w3-leftbar w3-rightbar  w3-border-blue w3-border w3-padding-16">
 
 
-    <div class="w3-col s2">
-        <jsp:include page="components/productSelector.jsp"/>
+<div class="w3-row">
+
+
+    <div class="w3-col s7 w3-panel ">
+        <div class="w3-row">
+            <div class="w3-col s3">
+                <jsp:include page="components/productSelector.jsp"/>
+            </div>
+            <div class="w3-col s3">
+                <select class="w3-select w3-margin-left" onchange="onProductChange()" id="fileterSelector" >
+                    <option value="false" selected>All Entries</option>
+                    <option value="true">Empty Entries</option>
+                </select>
+            </div>
+        </div>
+
     </div>
-    <div class="w3-col s2">
-        <select class="w3-select w3-margin-left" onchange="onProductChange()" id="fileterSelector" >
-            <option value="false" selected>All Entries</option>
-            <option value="true">Empty Entries</option>
-        </select>
-    </div>
-    <div class="w3-col s2  w3-right">
-        <button class="w3-button w3-blue  w3-right " onclick="downloadFile('English')">Download</button>
-    </div>
-    <div class="w3-col s3  w3-right w3-margin-right">
-        <jsp:include page="components/languageSelector.jsp"/>
+    <div class="w3-col w3-right s5 w3-panel w3-light-grey w3-leftbar w3-border-grey w3-padding">
+        <div class="w3-row">
+            <div class="w3-col s4  w3-right ">
+                <button class="w3-button w3-blue  w3-right " onclick="downloadFile()"><i class="fa fa-download"></i>  Download</button>
+            </div>
+            <div class="w3-col s8  w3-right ">
+                <jsp:include page="components/languageSelector.jsp"/>
+            </div>
+        </div>
     </div>
 
 
@@ -54,6 +70,17 @@
 </div>
 
 <script>
+    function downloadFile() {
+        console.log("asdasd");
+        var lan = $('#languageSelector  option:selected').text();
+        var str = "";
+        $("#productTransTable span[rel=" + lan + "]").each(function () {
+            str = str +(this.dataset.key+" : '"+this.innerText+"',\n");
+        });
+        var filename = "asd";
+        var blob = new Blob([str], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, lan+".txt");
+    }
     function showAddTranslation() {
         var productId = $('#productSelector').val();
         if(productId>-1) {

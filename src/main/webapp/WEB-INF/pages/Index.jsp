@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="js/jQuery.js"></script>
 <script src="js/FileSaver.js"></script>
+<script src="js/sweetAlert.js"></script>
 <%@ page pageEncoding="UTF-8" %>
 <style>
     body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
@@ -42,7 +43,7 @@
 
 
 
-<body class="">
+<body class="w3-text-black">
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-indigo">
