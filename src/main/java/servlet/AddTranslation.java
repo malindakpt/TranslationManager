@@ -1,9 +1,6 @@
 package servlet; /**
  * Created by MalindaK on 2/21/2016.
  */
-// Import required java libraries
-
-
 import entity.*;
 import entityManager.EntityManager;
 
@@ -32,10 +29,9 @@ public class AddTranslation extends HttpServlet {
             out.write("Default key is already exist !");
         } else {
             int n = 0;
-            TranslationEntity translationEntity = null;
             for (String lan : lanArr) {
                 Language language = (Language) entityManager.getEntity(Language.class, "languageId", lan);
-                translationEntity = new TranslationEntity();
+                TranslationEntity translationEntity = new TranslationEntity();
                 translationEntity.setLanguage(language);
                 translationEntity.setDefaultKey(defKey);
                 translationEntity.setLanguageTerm(transArr[n++]);

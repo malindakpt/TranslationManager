@@ -69,6 +69,7 @@
                 console.log("Add Translation");
                 if (result === "") {
                     $('#addTrnsModal').hide();
+                    getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
                     getAndSetPage("PageKeySelector", "PageKeySelector");
                 } else {
                     alert(result);

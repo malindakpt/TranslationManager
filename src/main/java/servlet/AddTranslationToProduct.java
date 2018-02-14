@@ -25,6 +25,13 @@ public class AddTranslationToProduct extends HttpServlet {
         String enText = request.getParameter("enText");
         String[] languageArr = request.getParameterValues("languageArr[]");
         String productId = request.getParameter("productId");
+
+        if("".equals(enText) || enText==null){
+            out.write("English term cannot be empty");
+            return;
+        }
+
+
         Product product = (Product) entityManager.getEntity(Product.class, "productId", productId);
         if(product != null) {
             TranslationEntity translation = (TranslationEntity) entityManager.getFirstEntity2(TranslationEntity.class, "languageTerm", enText, "languageId", "1");

@@ -15,7 +15,7 @@
         </th>
 
         <th>
-            Lnaguage
+            Language
         </th>
         <th>
             Translation

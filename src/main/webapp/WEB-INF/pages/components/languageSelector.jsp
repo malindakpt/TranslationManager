@@ -2,8 +2,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="entityManager.EntityManager" %>
 <%@ page import="entity.Language" %>
-<select id="languageSelector"  class="w3-select" class="w3-select" onchange="onLanguageChange()">
-    <option value="-1">- Select an Language -</option>
+<select id="languageSelector"  class="w3-select" onchange="onLanguageChange()">
+    <option value="-1">Select Language</option>
     <%
         EntityManager entityManager = new EntityManager();
         List<Entity> languages = entityManager.getEntities(Language.class);
