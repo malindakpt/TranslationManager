@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/custom.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/sweetalert.css">>
 <script src="js/jQuery.js"></script>
 <script src="js/FileSaver.js"></script>
 <script src="js/sweetAlert.js"></script>
@@ -39,6 +40,8 @@
 
 <script>
     var sess = <%=sessionId%>;
+
+
 
 </script>
 

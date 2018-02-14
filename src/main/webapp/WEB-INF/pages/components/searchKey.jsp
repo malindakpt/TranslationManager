@@ -5,10 +5,6 @@
 <%@ page import="java.lang.reflect.Array" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div style="height: 200px; overflow: scroll;">
-    <%--<select class="w3-select">--%>
-        <%--<option val="1">Search English Terms</option>--%>
-        <%--<option val="2">Search Localizarion Keys</option>--%>
-    <%--</select>--%>
     <%
         String key = request.getParameter("key");
         boolean lan = Boolean.parseBoolean(request.getParameter("lan"));

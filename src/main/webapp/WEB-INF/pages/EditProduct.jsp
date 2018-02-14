@@ -72,7 +72,7 @@
     <div class="w3-col w3-right s5 w3-panel w3-light-grey w3-leftbar w3-border-grey w3-padding">
         <div class="w3-row">
             <div class="w3-col s4  w3-right ">
-                <button class="w3-button w3-blue  w3-right " onclick="downloadFile()"><i class="fa fa-download"></i>  Download</button>
+                <button class="w3-button w3-indigo  w3-right " onclick="downloadFile()"><i class="fa fa-download"></i>  Download</button>
             </div>
             <div class="w3-col s8  w3-right ">
                 <jsp:include page="components/languageSelector.jsp"/>
@@ -163,24 +163,31 @@
         );
     }
     function removeProdTrans(ele) {
-        $.post('RemoveTranslationToProduct', {
-                key: ele.dataset.key,
-                productId: $('#productSelector').val(),
-                sess: sess
-            },
-            function (result) {
-                console.log("Response received");
-                if (result === "") {
-                    getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
-                    swal({text: "Translation removed from product", icon: "success", button: "OK", });
-                } else {
-                    swal({text: result, icon: "error", button: "OK", });
-                }
+        swal({
+            title: "Are you sure you need to remove this ?",
+            type: "warning",
+            showCancelButton: true
+        }, function() {
+            $.post('RemoveTranslationToProduct', {
+                    key: ele.dataset.key,
+                    productId: $('#productSelector').val(),
+                    sess: sess
+                },
+                function (result) {
+                    console.log("Response received");
+                    if (result === "") {
+                        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+                        swal({text: "Translation removed from product", icon: "success", button: "OK", });
+                    } else {
+                        swal({text: result, icon: "error", button: "OK", });
+                    }
 
-            }).fail(function () {
-            swal({text: "Error", icon: "error", button: "OK", });
-            }
-        );
+                }).fail(function () {
+                    swal({text: "Error", icon: "error", button: "OK", });
+                }
+            );
+        });
+
     }
     function addTranslationToProduct(event) {
         if($('#productSelector').val() < 0){
