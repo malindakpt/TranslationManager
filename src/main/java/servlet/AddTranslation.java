@@ -4,10 +4,7 @@ package servlet; /**
 // Import required java libraries
 
 
-import entity.Entity;
-import entity.Language;
-import entity.TranslationEntity;
-import entity.User;
+import entity.*;
 import entityManager.EntityManager;
 
 import javax.servlet.ServletException;
@@ -27,6 +24,7 @@ public class AddTranslation extends HttpServlet {
         EntityManager entityManager = new EntityManager();
         String[] lanArr = request.getParameterValues("lanArr[]");
         String defKey = request.getParameter("defKey");
+        String productId = request.getParameter("productId");
         String[] transArr = request.getParameterValues("transArr[]");
 
         List<Entity> existList = entityManager.getEntity1(TranslationEntity.class, "defaultKey", defKey);
@@ -34,14 +32,24 @@ public class AddTranslation extends HttpServlet {
             out.write("Default key is already exist !");
         } else {
             int n = 0;
+            TranslationEntity translationEntity = null;
             for (String lan : lanArr) {
                 Language language = (Language) entityManager.getEntity(Language.class, "languageId", lan);
-                TranslationEntity translationEntity = new TranslationEntity();
+                translationEntity = new TranslationEntity();
                 translationEntity.setLanguage(language);
                 translationEntity.setDefaultKey(defKey);
                 translationEntity.setLanguageTerm(transArr[n++]);
                 entityManager.add(translationEntity);
+
+                Product product = (Product) entityManager.getEntity(Product.class, "productId", productId);
+                ProductTranslation productTranslation = new ProductTranslation();
+                productTranslation.setProduct(product);
+                productTranslation.setLocalizationKey(defKey);
+                productTranslation.setTranslationEntity(translationEntity);
+                entityManager.add(productTranslation);
             }
+
+
         }
     }
 

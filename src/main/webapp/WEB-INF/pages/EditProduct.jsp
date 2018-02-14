@@ -4,7 +4,7 @@
 </div>
 
 <div id="addTranslationWidget">
-    <jsp:include page="AddTranslation.jsp"/>
+    <%--<jsp:include page="AddTranslation.jsp"/>--%>
 </div>
 
 <div class="w3-row">
@@ -46,7 +46,13 @@
 
 <script>
     function showAddTranslation() {
-        $('#addTrnsModal').show();
+        var productId = $('#productSelector').val();
+        if(productId>-1) {
+            getAndSetPage("PageAddTranslation?productId=" + productId, "addTranslationWidget");
+
+        } else{
+            alert("Please select a product");
+        }
     }
     function onProductChange() {
         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val()+"&showEmpty="+$('#fileterSelector').val(), "translationTable");
