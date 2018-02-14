@@ -7,6 +7,8 @@ package servlet; /**
 import entity.Language;
 import entity.User;
 import entityManager.EntityManager;
+import util.Constants;
+import util.Helper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,15 @@ public class AddLanguage extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+
+        // Check authorization
+        Helper helper = new Helper();
+        User user = helper.getUser(request);
+        if(user == null || user!=null && user.getRole() <= Constants.ROLE_ADMIN_USER){
+            out.write("Operation not permitted");
+            return;
+        }
+
         String name = request.getParameter("name");
         Language language = new Language();
         language.setName(name);

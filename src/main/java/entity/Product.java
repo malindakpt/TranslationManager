@@ -1,6 +1,6 @@
 package entity;
 
-import AppConfig.DBConfig;
+import configuration.DBConfig;
 
 import javax.persistence.*;
 import java.util.Set;

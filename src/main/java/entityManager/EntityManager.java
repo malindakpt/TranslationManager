@@ -1,8 +1,7 @@
 package entityManager;
 
-import AppConfig.HibernateUtil;
+import configuration.HibernateUtil;
 import entity.Entity;
-import entity.ProductTranslation;
 import org.hibernate.*;
 
 import java.util.HashMap;

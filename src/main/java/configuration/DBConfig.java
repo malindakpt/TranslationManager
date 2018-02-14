@@ -1,4 +1,4 @@
-package AppConfig;
+package configuration;
 
 /**
  * Created by MalindaK on 2/12/2018.

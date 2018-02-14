@@ -17,5 +17,6 @@
             <mapping class="entity.Product"></mapping>
             <mapping class="entity.TranslationEntity"></mapping>
             <mapping class="entity.ProductTranslation"></mapping>
+            <mapping class="entity.LogRecord"></mapping>
     </session-factory>
 </hibernate-configuration>

@@ -1,9 +1,8 @@
 package entity;
 
-import AppConfig.DBConfig;
+import configuration.DBConfig;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @javax.persistence.Entity
 @Table(name = "productTranslation", catalog = DBConfig.DB_NAME, uniqueConstraints = {

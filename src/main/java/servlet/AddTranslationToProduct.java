@@ -6,6 +6,8 @@ package servlet; /**
 
 import entity.*;
 import entityManager.EntityManager;
+import util.Constants;
+import util.Helper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +22,21 @@ public class AddTranslationToProduct extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
+
+
+
+
         EntityManager entityManager = new EntityManager();
         PrintWriter out = response.getWriter();
+
+        // Check authorization
+        Helper helper = new Helper();
+        User user = helper.getUser(request);
+        if(user == null || user!=null && user.getRole() <= Constants.ROLE_ADMIN_USER){
+            out.write("Operation not permitted");
+            return;
+        }
+
         String enText = request.getParameter("enText");
         String[] languageArr = request.getParameterValues("languageArr[]");
         String productId = request.getParameter("productId");

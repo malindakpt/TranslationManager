@@ -6,7 +6,10 @@ package servlet; /**
 
 import entity.Language;
 import entity.TranslationEntity;
+import entity.User;
 import entityManager.EntityManager;
+import util.Constants;
+import util.Helper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +24,15 @@ public class EditTranslation extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+
+        // Check authorization
+        Helper helper = new Helper();
+        User user = helper.getUser(request);
+        if(user == null){
+            out.write("Operation not permitted");
+            return;
+        }
+
         EntityManager entityManager = new EntityManager();
         String transEntityID = request.getParameter("transEntityID");
         String translationVal = request.getParameter("translationVal");

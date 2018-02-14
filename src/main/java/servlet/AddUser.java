@@ -8,6 +8,8 @@ import entity.Entity;
 import entity.Language;
 import entity.User;
 import entityManager.EntityManager;
+import util.Constants;
+import util.Helper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +25,15 @@ public class AddUser extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+
+        // Check authorization
+        Helper helper = new Helper();
+        User user = helper.getUser(request);
+        if(user == null || user!=null && user.getRole() <= Constants.ROLE_ADMIN_USER){
+            out.write("Operation not permitted");
+            return;
+        }
+
         EntityManager entityManager = new EntityManager();
         String name = request.getParameter("name");
         String userName = request.getParameter("userName");
@@ -35,11 +46,12 @@ public class AddUser extends HttpServlet {
             if(uList != null && uList.size()>0){
                 out.write("Username already exist");
             } else {
-                User user = new User();
-                user.setName(name);
-                user.setUserName(userName);
-                user.setPassword(password1);
-                entityManager.add(user);
+                User newUser = new User();
+                newUser.setName(name);
+                newUser.setUserName(userName);
+                newUser.setPassword(password1);
+                newUser.setRole(Constants.ROLE_STD_USER);
+                entityManager.add(newUser);
             }
         }else{
             out.write("Confirm password doesn't match");

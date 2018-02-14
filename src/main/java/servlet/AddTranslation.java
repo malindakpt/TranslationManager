@@ -3,6 +3,8 @@ package servlet; /**
  */
 import entity.*;
 import entityManager.EntityManager;
+import util.Constants;
+import util.Helper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +20,17 @@ public class AddTranslation extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+
+
+        // Check authorization
+        Helper helper = new Helper();
+        User user = helper.getUser(request);
+        if(user == null || user!=null && user.getRole() <= Constants.ROLE_ADMIN_USER){
+            out.write("Operation not permitted");
+            return;
+        }
+
+
         EntityManager entityManager = new EntityManager();
         String[] lanArr = request.getParameterValues("lanArr[]");
         String defKey = request.getParameter("defKey");

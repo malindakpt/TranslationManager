@@ -7,7 +7,10 @@ package servlet; /**
 import entity.Product;
 import entity.ProductTranslation;
 import entity.TranslationEntity;
+import entity.User;
 import entityManager.EntityManager;
+import util.Constants;
+import util.Helper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +26,15 @@ public class RemoveTranslationToProduct extends HttpServlet {
             throws ServletException, IOException {
         EntityManager entityManager = new EntityManager();
         PrintWriter out = response.getWriter();
-//        String id = request.getParameter("id");
+
+        // Check authorization
+        Helper helper = new Helper();
+        User user = helper.getUser(request);
+        if(user == null || user!=null && user.getRole() <= Constants.ROLE_ADMIN_USER){
+            out.write("Operation not permitted");
+            return;
+        }
+
         String key = request.getParameter("key");
         entityManager.delete(ProductTranslation.class, "localizationKey", key);
     }
