@@ -1,1 +1,3 @@
-ALTER TABLE `translationentity` CHANGE `languageTerm` `languageTerm` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+ALTER TABLE `translationentity` CHANGE `languageTerm` `languageTerm` VARCHAR(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+ALTER TABLE `user` ADD `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `userName`;
+ALTER TABLE `logrecord` ADD `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `userId`;

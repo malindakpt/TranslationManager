@@ -5,6 +5,7 @@ package servlet; /**
 
 
 import entity.Language;
+import entity.LogRecord;
 import entity.User;
 import entityManager.EntityManager;
 import util.Constants;
@@ -27,15 +28,19 @@ public class AddLanguage extends HttpServlet {
         // Check authorization
         Helper helper = new Helper();
         User user = helper.getUser(request);
-        if(user == null || user!=null && user.getRole() <= Constants.ROLE_ADMIN_USER){
+        if(user == null || user!=null && user.getRole() < Constants.ROLE_ADMIN_USER){
             out.write("Operation not permitted");
             return;
         }
 
+        EntityManager entityManager = new EntityManager();
         String name = request.getParameter("name");
         Language language = new Language();
         language.setName(name);
-        new EntityManager().add(language);
+        entityManager.add(language);
+
+        entityManager.add(new LogRecord("Language Added:"+ language.getName(), user));
+
     }
 
     public void doGet(HttpServletRequest request,

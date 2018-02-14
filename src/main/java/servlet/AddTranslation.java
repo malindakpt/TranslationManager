@@ -25,7 +25,7 @@ public class AddTranslation extends HttpServlet {
         // Check authorization
         Helper helper = new Helper();
         User user = helper.getUser(request);
-        if(user == null || user!=null && user.getRole() <= Constants.ROLE_ADMIN_USER){
+        if(user == null || user!=null && user.getRole() < Constants.ROLE_ADMIN_USER){
             out.write("Operation not permitted");
             return;
         }
@@ -49,6 +49,7 @@ public class AddTranslation extends HttpServlet {
                 translationEntity.setDefaultKey(defKey);
                 translationEntity.setLanguageTerm(transArr[n++]);
                 entityManager.add(translationEntity);
+                entityManager.add(new LogRecord("TranslationEntity Added:"+ translationEntity.getDefaultKey(), user));
 
                 Product product = (Product) entityManager.getEntity(Product.class, "productId", productId);
                 ProductTranslation productTranslation = new ProductTranslation();
@@ -56,6 +57,7 @@ public class AddTranslation extends HttpServlet {
                 productTranslation.setLocalizationKey(defKey);
                 productTranslation.setTranslationEntity(translationEntity);
                 entityManager.add(productTranslation);
+                entityManager.add(new LogRecord("ProductTranslationEntity Added:"+ translationEntity.getDefaultKey(), user));
             }
 
 

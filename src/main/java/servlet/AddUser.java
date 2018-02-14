@@ -29,7 +29,7 @@ public class AddUser extends HttpServlet {
         // Check authorization
         Helper helper = new Helper();
         User user = helper.getUser(request);
-        if(user == null || user!=null && user.getRole() <= Constants.ROLE_ADMIN_USER){
+        if(user == null || user!=null && user.getRole() < Constants.ROLE_ADMIN_USER){
             out.write("Operation not permitted");
             return;
         }
