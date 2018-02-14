@@ -318,7 +318,7 @@ public class EntityManager {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
 
-            String hql="SELECT emp.languageTerm from TranslationEntity emp WHERE emp.languageTerm like '%"+searchKey+"%'";
+            String hql="SELECT emp.languageTerm from TranslationEntity emp WHERE emp.languageTerm like '%"+searchKey+"%' AND languageId=1";
             Query query=session.createQuery(hql);
             entities = query.list();
 

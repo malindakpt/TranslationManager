@@ -11,19 +11,43 @@
         <button class="w3-indigo w3-button" onclick="showAddTranslation()" ><i class="fa fa-plus-circle"></i> Add New Translation</button>
     </div>
 
-    <div class="w3-col s5 w3-right ">
+    <div class="w3-col s4 w3-right ">
         <%--<div class="w3-row w3-panel w3-light-grey w3-leftbar w3-border-grey w3-padding">--%>
             <%--<div class="w3-col s5 w3-right ">--%>
                 <%--<button class="w3-indigo w3-button w3-right" onclick="addTranslationToProduct()"><i class="fa fa-outdent"></i>  Add To Product</button>--%>
             <%--</div>--%>
             <%--<div class="w3-col s3 w3-right w3-margin-left " id="PageKeySelector">--%>
                 <%--<jsp:include page="components/keySelector.jsp"/>--%>
-                <input class="w3-input" id="searchInputValue" onkeyup="searchKey()" placeholder="Search laguage terms.."/>
+            <div class="w3-row w3-right">
+                <label>Loc. Keys</label>
+
+                <input class="w3-radio" type="radio" name="gender" value="key">
+                <label>English Words</label>
+
+                <input class="w3-radio" type="radio" name="gender" value="lan" checked>
+            </div>
+            <div>
+                <input class="w3-input w3-margin-bottom" id="searchInputValue" onfocus="showSearch()" onblur="hideTimeout()" onkeyup="searchKey()" placeholder="Search localization keys or English terms"/>
                 <div id="searchResultContainer"></div>
+            </div>
+
             <%--</div>--%>
 
         <%--</div>--%>
+    <script>
+        function hideTimeout() {
 
+            setTimeout(function(){
+                $('#searchResultContainer').hide();
+                $('#searchInputValue').val("");
+                }, 300);
+        }
+
+        function showSearch() {
+            setTimeout(function(){ $('#searchResultContainer').show(); }, 300);
+        }
+
+    </script>
 
 
     </div>
@@ -75,9 +99,10 @@
         var key = $('#searchInputValue').val();
         if(key!="") {
             console.log(key);
+            $('#searchResultContainer').show()
             getAndSetPage("PageSearchKey?key=" + toUnicode($('#searchInputValue').val()), "searchResultContainer");
         } else{
-            $('#searchResultContainer').html("");
+            $('#searchResultContainer').hide();
         }
     }
     function downloadFile() {
@@ -152,12 +177,13 @@
             }
         );
     }
-    function addTranslationToProduct() {
+    function addTranslationToProduct(event) {
         if($('#productSelector').val() < 0){
             swal({text: "Please select a product", icon: "error", button: "OK", });
         } else {
             $.post('AddTranslationToProduct', {
-                    enText: toUnicode($('#searchKeyInput').val()),
+                    enText: toUnicode(event.dataset.txt),
+//                    enText: toUnicode($('#searchInputValue').val()),
                     languageArr: [1, 2],
                     productId: $('#productSelector').val(),
                     sess: sess
@@ -165,6 +191,7 @@
                 function (result) {
                     if (result === "") {
                         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val() + "&languageId=" + $('#languageSelector').val(), "translationTable");
+                        swal({text: "Translation added to product", icon: "sucess", button: "OK", });
                     } else {
                         swal({text: result, icon: "error", button: "OK", });
                     }
