@@ -29,14 +29,21 @@ public class AddTranslationToProduct extends HttpServlet {
         if(product != null) {
             TranslationEntity translation = (TranslationEntity) entityManager.getFirstEntity2(TranslationEntity.class, "languageTerm", enText, "languageId", "1");
             if (translation != null) {
-                String defKey = translation.getDefaultKey();
-                for (String lanId : languageArr) {
-                    TranslationEntity translationEntity = (TranslationEntity) entityManager.getFirstEntity2(TranslationEntity.class, "defaultKey", defKey, "languageId", lanId);
-                    ProductTranslation productTranslation = new ProductTranslation();
-                    productTranslation.setProduct(product);
-                    productTranslation.setLocalizationKey(defKey);
-                    productTranslation.setTranslationEntity(translationEntity);
-                    entityManager.add(productTranslation);
+
+                ProductTranslation productTranslation = (ProductTranslation) entityManager.getFirstEntity1(ProductTranslation.class, "localizationKey", translation.getDefaultKey());
+                if(productTranslation == null) {
+
+                    String defKey = translation.getDefaultKey();
+                    for (String lanId : languageArr) {
+                        TranslationEntity translationEntity = (TranslationEntity) entityManager.getFirstEntity2(TranslationEntity.class, "defaultKey", defKey, "languageId", lanId);
+                        productTranslation = new ProductTranslation();
+                        productTranslation.setProduct(product);
+                        productTranslation.setLocalizationKey(defKey);
+                        productTranslation.setTranslationEntity(translationEntity);
+                        entityManager.add(productTranslation);
+                    }
+                } else {
+                    out.write("Translation already added");
                 }
             } else {
                 out.write("No translation exist");

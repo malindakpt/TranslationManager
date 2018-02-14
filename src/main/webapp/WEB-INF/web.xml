@@ -5,7 +5,16 @@
 
 	<display-name>Spring MVC Application</display-name>
 
-	<!--School Management Start-->
+
+
+	<servlet>
+		<servlet-name>BatchUpload</servlet-name>
+		<servlet-class>servlet.BatchUpload</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BatchUpload</servlet-name>
+		<url-pattern>/BatchUpload</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>Login</servlet-name>
@@ -73,7 +82,7 @@
 	</servlet-mapping>
 
 
-	<!--School Management End-->
+
 
 
 	<servlet>

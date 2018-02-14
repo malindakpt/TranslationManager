@@ -135,7 +135,7 @@
 
     <div class="modal-content animate" style="max-width: 388px;">
         <div class="w3-container w3-indigo">
-            <h4>Mubasher Trade Labguage Portal</h4>
+            <h4>Mubasher Trade Language Portal</h4>
         </div>
         <div>
             <img src="img/logo2.png" style="

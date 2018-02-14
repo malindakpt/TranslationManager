@@ -112,6 +112,7 @@
             <i class="fa fa-facebook-official w3-hover-opacity w3-right"></i>
             <i class="fa fa-twitter w3-hover-opacity w3-right"></i>
             <i class="fa fa-linkedin w3-hover-opacity w3-right"></i>
+
         </div>
         <div class="w3-row">
             <span class="w3-medium w3-right">Powered by </span>
