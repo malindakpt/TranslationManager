@@ -116,7 +116,7 @@
     <!-- Header/Home -->
     <header class="w3-container w3-padding-32 w3-center w3-indigo" id="home">
         <span><h2>Mubasher Trade Language Portal</h2> </span>
-        <span> <%=user.getName()%> <%= user.getRole() == Constants.ROLE_ADMIN_USER ? "(Administrator)" :"(Standard User)"  %></span>
+        <span> <%=user.getName()%> <%= user.getRole() == Constants.ROLE_ADMIN_USER ? "( Administrator )" : user.getRole() == Constants.ROLE_OWNER ?"( Privileged User )": "( Standard User )"  %></span>
         <span></span>
         <span class="w3-right w3-margin-right" onclick="window.location.href='/PageLogin'"><i class="fa fa-power-off w3-xxlarge"></i></span>
     </header>

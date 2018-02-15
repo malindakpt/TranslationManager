@@ -9,7 +9,7 @@
 
             <label>Name</label>
             <input id="name" class="w3-input" type="text">
-            <label>User Name</label>
+            <label>Email Address</label>
             <input id="userName" class="w3-input" type="text">
             <label>Password</label>
             <input id="password1" class="w3-input" type="password">
@@ -21,8 +21,6 @@
             <button class="w3-button w3-blue w3-right w3-margin" onclick="addUser()">Add User</button>
 
         </div>
-
-
     </div>
 </div>
 

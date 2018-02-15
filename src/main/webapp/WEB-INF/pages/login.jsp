@@ -147,7 +147,7 @@
         </div>
 
         <div class="container">
-            <label><b>Username</b></label>
+            <label><b>Email Address</b></label>
             <input id="userName" type="text" placeholder="Enter Username" name="uname" required>
 
             <label><b>Password</b></label>
