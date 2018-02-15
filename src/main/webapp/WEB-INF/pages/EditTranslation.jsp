@@ -48,7 +48,7 @@
                 $('#id01').hide();
                 if (result === "") {
                     if(type == 1) {
-                        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+                        getAndSetPage("PageProTransTable?showEmpty="+$('#fileterSelector').val()+"&productId=" + $('#productSelector').val(), "translationTable");
                     }else{
                         getAndSetPage('PageAllTranslations');
                     }

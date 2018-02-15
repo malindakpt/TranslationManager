@@ -1,8 +1,10 @@
-<input id="textFileEN" placeholder="EN">
-<input id="textFileAR" placeholder="AR">
+<%--<input id="textFileEN" placeholder="EN">--%>
+<%--<input id="textFileAR" placeholder="AR">--%>
+<button  class="w3-button w3-blue w3-right" onclick="upload()">Upload</button>
+<textarea id="textFileEN" rows="20" cols="50" placeholder="English Text"></textarea>
+<textarea id="textFileAR" rows="20" cols="50" placeholder="Arabic Text"></textarea>
 
 
-<button onclick="upload()">Upload</button>
 
 <script>
 
@@ -43,8 +45,6 @@
 
                     }
                 );
-
-              //  console.log(property+"-	"+toUnicode(object[property]));
             }
         }
     }

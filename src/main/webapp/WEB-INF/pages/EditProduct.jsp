@@ -13,14 +13,14 @@
 
     <div class="w3-col s4 w3-right ">
             <div class="w3-row w3-right">
-                <label>Loc. Keys</label>
+                <label>Keys</label>
                 <input id="idKey" class="w3-radio" type="radio" name="gender" value="key">
 
-                <label>English Words</label>
+                <label>Words</label>
                 <input id="idLan" class="w3-radio" type="radio" name="gender" value="lan" checked>
             </div>
             <div>
-                <input class="w3-input w3-margin-bottom" id="searchInputValue" onfocus="showSearch()" onblur="hideTimeout()" onkeyup="searchKey()" placeholder="Search localization keys or English terms"/>
+                <input class="w3-input w3-margin-bottom" id="searchInputValue" onfocus="showSearch()" onblur="hideTimeout()" onkeyup="searchKey()" placeholder="Search..."/>
                 <div id="searchResultContainer"></div>
             </div>
     </div>
@@ -77,6 +77,7 @@
     function showSearch() {
         setTimeout(function(){ $('#searchResultContainer').show(); }, 300);
     }
+
     function searchKey() {
         var key = $('#searchInputValue').val();
         var searchKey;
@@ -120,7 +121,7 @@
         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val()+"&showEmpty="+$('#fileterSelector').val(), "translationTable");
     }
     function onLanguageChange() {
-        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val()+"&showEmpty="+$('#fileterSelector').val(), "translationTable");
     }
 
 
@@ -134,7 +135,7 @@
                 console.log("Response received");
                 if (result === "") {
                     swal("Success", "Translation edited", "success");
-                    getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+                    getAndSetPage("PageProTransTable?showEmpty="+$('#fileterSelector').val()+"&productId=" + $('#productSelector').val(), "translationTable");
 
                 } else {
                     swal("Error", result, "error");
@@ -159,10 +160,12 @@
                 function (result) {
                     console.log("Response received");
                     if (result === "") {
-                        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
-                        swal("Success", "Translation removed from product", "success");
+//                        swal("Success", "Translation removed from product", "success");
+                        alert("Translation removed from product")
+                        getAndSetPage("PageProTransTable?showEmpty="+$('#fileterSelector').val()+"&productId=" + $('#productSelector').val(), "translationTable");
                     } else {
-                        swal("Error", result, "error");
+//                        swal("Error", result, "error");
+                        alert("Operation not permited")
                     }
 
                 }).fail(function () {
@@ -186,9 +189,10 @@
                 },
                 function (result) {
                     if (result === "") {
-                        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val() + "&languageId=" + $('#languageSelector').val(), "translationTable");
 
                         swal("Success", "Translation added to product", "success");
+                        getAndSetPage("PageProTransTable?showEmpty="+$('#fileterSelector').val()+"&productId=" + $('#productSelector').val() + "&languageId=" + $('#languageSelector').val(), "translationTable");
+
                     } else {
                         swal("Error", result, "error");
                     }

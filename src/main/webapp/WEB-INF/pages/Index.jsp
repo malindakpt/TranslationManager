@@ -48,7 +48,8 @@
 
 
 <body class="w3-text-black">
-
+<div class="loader" id="busyIcon" style="display: block"></div>
+<div class="w3-overlay w3-animate-opacity" style="cursor:pointer" style="display: block" id="myOverlay2"></div>
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-indigo">
     <!-- Avatar image in top left corner -->
@@ -79,7 +80,7 @@
             <p>LOG VIEWER</p>
         </a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageBatchUpload')">
-            <i class="fa fa-line-chart w3-xxlarge"></i>
+            <i class="fa fa-cloud-upload w3-xxlarge"></i>
             <p>BATCH UPLOAD</p>
         </a>
 
@@ -156,19 +157,19 @@
 
     function w3_open() {
 //        document.getElementById("mySidebar").style.display = "block";
-//        document.getElementById("myOverlay").style.display = "block";
+//        document.getElementById("myOverlay2").style.display = "block";
     }
     function w3_close() {
 //        document.getElementById("mySidebar").style.display = "none";
-//        document.getElementById("myOverlay").style.display = "none";
+//        document.getElementById("myOverlay2").style.display = "none";
     }
     function busyOn() {
-//        document.getElementById("myOverlay2").style.display = "block";
-//        document.getElementById("busyIcon").style.display = "block";
+        document.getElementById("myOverlay2").style.display = "block";
+        document.getElementById("busyIcon").style.display = "block";
     }
     function busyOff() {
-//        document.getElementById("myOverlay2").style.display = "none";
-//        document.getElementById("busyIcon").style.display = "none";
+        document.getElementById("myOverlay2").style.display = "none";
+        document.getElementById("busyIcon").style.display = "none";
     }
     function showHideElement(id) {
         var x = document.getElementById(id);
