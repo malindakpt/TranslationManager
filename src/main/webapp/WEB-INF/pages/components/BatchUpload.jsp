@@ -2,18 +2,22 @@
 <%@ page import="java.util.List" %>
 <%@ page import="entity.Entity" %>
 <%@ page import="entity.User" %>
-
+<div>
+    <a href="PageMainAdduser">Send Add User Link</a>
+</div>
 <%
     EntityManager entityManager = new EntityManager();
     List<Entity> entities = entityManager.getEntity1(User.class, "isApproved", "0");
 
+    if(entities!=null){
     for(Entity entity : entities){
         User user = (User) entity;
 %>
-        <div class="w3-row">
-            <span><%=user.getName()+"  " + user.getUserName() + " - "  %><button id="<%=user.getUserId()%>" class="w3-button " onclick="approve(this)">Approve</button><button id="<%=user.getUserId()%>" class="w3-button " onclick="remove(this)">Delete</button></span>
+        <div class="w3-row w3-margin">
+            <span><%=user.getName()+"  " + user.getUserName() + " - "  %><button id="<%=user.getUserId()%>" class="w3-button w3-green" onclick="approve(this)">Approve</button><button id="<%=user.getUserId()%>" class="w3-button w3-red" onclick="remove(this)">Delete</button></span>
         </div>
 <%
+    }
     }
 %>
 
@@ -33,7 +37,7 @@
             },
             function (result) {
                 if (result === "") {
-                    console.log("ok "+ok++);
+                    getAndSetPage('PageBatchUpload')
                 } else {
                     console.log("Error:-"+ result);
                 }
@@ -52,7 +56,7 @@
             },
             function (result) {
                 if (result === "") {
-                    console.log("ok "+ok++);
+                    getAndSetPage('PageBatchUpload')
                 } else {
                     console.log("Error:-"+ result);
                 }

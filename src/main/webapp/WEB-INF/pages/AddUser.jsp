@@ -22,6 +22,7 @@
 
         </div>
 
+
     </div>
 </div>
 
@@ -45,7 +46,7 @@
                 },
                 function (result) {
                     if (result === "") {
-                        swal("Success", "User Added", "success");
+                        swal("Success", "Waiting for approval", "success");
                         getAndSetPage("PageAddUser");
                     } else {
                         swal("Error", result, "error");

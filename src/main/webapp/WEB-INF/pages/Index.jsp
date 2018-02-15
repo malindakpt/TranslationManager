@@ -77,22 +77,24 @@
             <p>LOG VIEWER</p>
         </a>
 
-        <%
-            if(user.getRole()==Constants.ROLE_OWNER){
-        %>
 
-        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageBatchUpload')">
-            <i class="fa fa-cloud-upload w3-xxlarge"></i>
-            <p>BATCH UPLOAD</p>
-        </a>
-
-        <%
-            }
-        %>
         <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAddUser')">
             <i class="fa fa-user-plus w3-xxlarge"></i>
             <p>ADD USER</p>
         </a>
+
+    <%
+        if(user.getRole()==Constants.ROLE_OWNER){
+    %>
+
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageBatchUpload')">
+        <i class="fa fa-gears w3-xxlarge"></i>
+        <p>SETTINGS</p>
+    </a>
+
+    <%
+        }
+    %>
 
     <%
         }
