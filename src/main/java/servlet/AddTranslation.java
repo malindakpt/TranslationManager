@@ -58,7 +58,7 @@ public class AddTranslation extends HttpServlet {
                 productTranslation.setLocalizationKey(defKey);
                 productTranslation.setTranslationEntity(translationEntity);
                 entityManager.add(productTranslation);
-                entityManager.add(new LogRecord("ProductTranslation added to "+product.getProductName()+" : "+ translationEntity.getLanguageTerm()+"("+translationEntity.getDefaultKey()+")", user, Calendar.getInstance().getTime()));
+                entityManager.add(new LogRecord("ProductTranslation added to "+product.getProductName()+" :  ("+translationEntity.getDefaultKey()+")", user, Calendar.getInstance().getTime()));
             }
 
 

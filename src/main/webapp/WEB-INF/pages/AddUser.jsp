@@ -15,6 +15,8 @@
             <input id="password1" class="w3-input" type="password">
             <label>Confirm Password</label>
             <input id="password2" class="w3-input" type="password">
+            <input class="w3-check" type="checkbox" id="isAdmin">
+            <label>Administrator</label>
 
             <button class="w3-button w3-blue w3-right w3-margin" onclick="addUser()">Add User</button>
 
@@ -38,6 +40,7 @@
                     userName: $('#userName').val(),
                     password1: $('#password1').val(),
                     password2: $('#password2').val(),
+                    isAdmin: $('#isAdmin').prop('checked'),
                     sess: sess
                 },
                 function (result) {

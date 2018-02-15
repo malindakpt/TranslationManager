@@ -7,8 +7,11 @@
 <br>
 <table class="w3-table w3-striped w3-bordered" id="productTransTable">
     <tr>
+        <th>
+            No
+        </th>
        <th>
-           Localization Key
+           Key
        </th>
          <th>
             Language
@@ -29,7 +32,7 @@
     EntityManager entityManager = new EntityManager();
     List<Entity> productTranslationList = entityManager.getProductLanguageTranslations(productId);
     if(productTranslationList != null){
-
+    int n = 0;
     for( Entity entity: productTranslationList){
         ProductTranslation productTranslation = (ProductTranslation) entity;
         if( !"".equals(productTranslation.getTranslationEntity().getLanguageTerm()) && "true".equals(showEmpty)){
@@ -38,6 +41,9 @@
 
 %>
 <tr>
+    <td>
+        <%= ++n%>
+    </td>
     <td>
         <%=productTranslation.getLocalizationKey()%>
     </td>

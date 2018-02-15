@@ -11,7 +11,7 @@
         for(Entity entity : languages){
             Product product = (Product)entity;
     %>
-            <option value="<%=product.getProductId()%>"><%=product.getProductName()%></option>
+            <option value="<%=product.getProductId()%>"> <%=product.getProductName()%></option>
     <%
         }
     %>

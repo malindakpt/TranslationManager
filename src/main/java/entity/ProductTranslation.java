@@ -32,7 +32,7 @@ public class ProductTranslation extends Entity {
         this.product = product;
     }
 
-    @Column(name = "localizationKey", nullable = true, length = 30)
+    @Column(name = "localizationKey", nullable = true, length = 300)
     public String getLocalizationKey() {
         return localizationKey;
     }

@@ -42,6 +42,8 @@ public class AddUser extends HttpServlet {
         String userName = request.getParameter("userName");
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
+        String isAdmin = request.getParameter("isAdmin");
+        int role = "true".equals(isAdmin)? Constants.ROLE_ADMIN_USER : Constants.ROLE_STD_USER;
 
         if(password1.equals(password2)) {
 
@@ -53,7 +55,7 @@ public class AddUser extends HttpServlet {
                 newUser.setName(name);
                 newUser.setUserName(userName);
                 newUser.setPassword(password1);
-                newUser.setRole(Constants.ROLE_STD_USER);
+                newUser.setRole(role);
                 entityManager.add(newUser);
                 entityManager.add(new LogRecord("New user: " +newUser.getName()+"("+newUser.getUserName()+") is added",
                         user, Calendar.getInstance().getTime()));
