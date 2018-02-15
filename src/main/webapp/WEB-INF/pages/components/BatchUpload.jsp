@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="entity.Entity" %>
 <%@ page import="entity.User" %>
+<%@ page import="util.Constants" %>
 <div>
     <a href="PageMainAdduser">Send Add User Link</a>
 </div>
@@ -14,7 +15,8 @@
         User user = (User) entity;
 %>
         <div class="w3-row w3-margin">
-            <span><%=user.getName()+"  " + user.getUserName() + " - "  %><button id="<%=user.getUserId()%>" class="w3-button w3-green" onclick="approve(this)">Approve</button><button id="<%=user.getUserId()%>" class="w3-button w3-red" onclick="remove(this)">Delete</button></span>
+            <span><span style="font-size: 22px;  color: black;"><%=user.getName()+"  " + user.getUserName() + " - "  %> <%= user.getRole() == Constants.ROLE_ADMIN_USER? "(Administrator)" : "(Standard User)"%>
+            </span><button id="<%=user.getUserId()%>" class="w3-button w3-green" onclick="approve(this)">Approve</button><button id="<%=user.getUserId()%>" class="w3-button w3-red" onclick="remove(this)">Delete</button></span>
         </div>
 <%
     }
