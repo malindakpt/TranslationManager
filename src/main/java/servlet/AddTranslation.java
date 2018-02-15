@@ -50,7 +50,7 @@ public class AddTranslation extends HttpServlet {
                 translationEntity.setDefaultKey(defKey);
                 translationEntity.setLanguageTerm(transArr[n++]);
                 entityManager.add(translationEntity);
-                entityManager.add(new LogRecord("Translation Added : "+ translationEntity.getDefaultKey(), user, Calendar.getInstance().getTime()));
+                entityManager.add(new LogRecord("Translation added : "+ translationEntity.getDefaultKey(), user, Calendar.getInstance().getTime()));
 
                 Product product = (Product) entityManager.getEntity(Product.class, "productId", productId);
                 ProductTranslation productTranslation = new ProductTranslation();
@@ -58,7 +58,7 @@ public class AddTranslation extends HttpServlet {
                 productTranslation.setLocalizationKey(defKey);
                 productTranslation.setTranslationEntity(translationEntity);
                 entityManager.add(productTranslation);
-                entityManager.add(new LogRecord("ProductTranslation Added : "+ translationEntity.getDefaultKey(), user, Calendar.getInstance().getTime()));
+                entityManager.add(new LogRecord("ProductTranslation added to "+product.getProductName()+" : "+ translationEntity.getLanguageTerm()+"("+translationEntity.getDefaultKey()+")", user, Calendar.getInstance().getTime()));
             }
 
 

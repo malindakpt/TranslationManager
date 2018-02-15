@@ -6,8 +6,10 @@ package servlet; /**
 
 import entity.Entity;
 import entity.Language;
+import entity.LogRecord;
 import entity.User;
 import entityManager.EntityManager;
+import org.apache.commons.lang.StringEscapeUtils;
 import util.Constants;
 import util.Helper;
 
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.List;
 
 public class AddUser extends HttpServlet {
@@ -52,6 +55,8 @@ public class AddUser extends HttpServlet {
                 newUser.setPassword(password1);
                 newUser.setRole(Constants.ROLE_STD_USER);
                 entityManager.add(newUser);
+                entityManager.add(new LogRecord("New user: " +newUser.getName()+"("+newUser.getUserName()+") is added",
+                        user, Calendar.getInstance().getTime()));
             }
         }else{
             out.write("Confirm password doesn't match");

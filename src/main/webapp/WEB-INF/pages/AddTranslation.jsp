@@ -52,33 +52,35 @@
     function addTranslation() {
         var lanArr = [];
         var transArr = [];
-        $("#addTranslationWidget input[rel=translations]").each(function () {
-            lanArr.push(this.id);
-            transArr.push(toUnicode(this.value));
-        });
-        console.log(lanArr);
-        console.log(transArr);
-        $.post('AddTranslation', {
-                productId: <%=product.getProductId()%>,
-                lanArr: lanArr,
-                defKey: $('#defKey').val(),
-                transArr: transArr,
-                sess: sess
-            },
-            function (result) {
-                console.log("Add Translation");
-                if (result === "") {
-                    $('#addTrnsModal').hide();
-                    getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
-                    getAndSetPage("PageKeySelector", "PageKeySelector");
-                } else {
-                    alert(result);
-                }
+        if($('#defKey').val() == ""){
+            swal("Error", "Please add the localization key", "error");
+        }else {
+            $("#addTranslationWidget input[rel=translations]").each(function () {
+                lanArr.push(this.id);
+                transArr.push(toUnicode(this.value));
+            });
+            $.post('AddTranslation', {
+                    productId: <%=product.getProductId()%>,
+                    lanArr: lanArr,
+                    defKey: $('#defKey').val(),
+                    transArr: transArr,
+                    sess: sess
+                },
+                function (result) {
+                    console.log("Add Translation");
+                    if (result === "") {
+                        $('#addTrnsModal').hide();
+                        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
+                        getAndSetPage("PageKeySelector", "PageKeySelector");
+                    } else {
+                        swal("Error", result, "error");
+                    }
 
-            }).fail(function () {
-                alert("Error");
-            }
-        );
+                }).fail(function () {
+                    swal("Error", "Unexpected error occured", "error");
+                }
+            );
+        }
     }
     $('#addTrnsModal').show();
 </script>

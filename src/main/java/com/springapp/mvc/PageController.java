@@ -104,6 +104,16 @@ class PageEditTranslationController {
 }
 
 @Controller
+@RequestMapping("/PageBatchUpload")
+class PageBatchUploadController {
+	@RequestMapping(method = RequestMethod.POST)
+	public String printWelcome(ModelMap model) {
+		return "components/BatchUpload";
+	}
+}
+
+
+@Controller
 @RequestMapping("/PageSearchKey")
 class PageSearchKeyController {
 	@RequestMapping(method = RequestMethod.POST)

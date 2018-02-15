@@ -78,6 +78,11 @@
             <i class="fa fa-line-chart w3-xxlarge"></i>
             <p>LOG VIEWER</p>
         </a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageBatchUpload')">
+            <i class="fa fa-line-chart w3-xxlarge"></i>
+            <p>BATCH UPLOAD</p>
+        </a>
+
     <%
         }
     %>

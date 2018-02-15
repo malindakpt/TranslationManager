@@ -25,25 +25,33 @@
 
 <script>
     function addUser() {
+        if(
+           $('#name').val() == "" ||
+           $('#userName').val() == "" ||
+           $('#password1').val() == "" ||
+           $('#password2').val() == ""
+        ){
+            swal("Error", "Please fill all the fields", "error");
+        }else {
+            $.post('AddUser', {
+                    name: $('#name').val(),
+                    userName: $('#userName').val(),
+                    password1: $('#password1').val(),
+                    password2: $('#password2').val(),
+                    sess: sess
+                },
+                function (result) {
+                    if (result === "") {
+                        swal("Success", "User Added", "success");
+                        getAndSetPage("PageAddUser");
+                    } else {
+                        swal("Error", result, "error");
+                    }
 
-        $.post('AddUser', {
-                name: $('#name').val(),
-                userName: $('#userName').val(),
-                password1: $('#password1').val(),
-                password2: $('#password2').val(),
-                sess: sess
-            },
-            function (result) {
-                if (result === "") {
-                    swal("Success", "User Added", "success");
-                    getAndSetPage("PageAddUser");
-                } else {
-                    swal("Error", result, "error");
+                }).fail(function () {
+                    swal("Error", "Unexpected error occured", "error");
                 }
-
-            }).fail(function () {
-                swal("Error", "Unexpected error occured", "error");
-            }
-        );
+            );
+        }
     }
 </script>
