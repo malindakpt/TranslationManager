@@ -71,17 +71,27 @@
         if(user == null || user!=null && user.getRole() < Constants.ROLE_ADMIN_USER) {
         } else {
     %>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAddUser')">
-            <i class="fa fa-user-plus w3-xxlarge"></i>
-            <p>ADD USER</p>
-        </a>
+
         <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageLogViewer')">
             <i class="fa fa-line-chart w3-xxlarge"></i>
             <p>LOG VIEWER</p>
         </a>
+
+        <%
+            if(user.getRole()==Constants.ROLE_OWNER){
+        %>
+
         <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageBatchUpload')">
             <i class="fa fa-cloud-upload w3-xxlarge"></i>
             <p>BATCH UPLOAD</p>
+        </a>
+
+        <%
+            }
+        %>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-indigo" onclick="getAndSetPage('PageAddUser')">
+            <i class="fa fa-user-plus w3-xxlarge"></i>
+            <p>ADD USER</p>
         </a>
 
     <%
@@ -154,6 +164,10 @@
 </body>
 </html>
 <script>
+
+    function getHash(s){
+        return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+    }
 
     function w3_open() {
 //        document.getElementById("mySidebar").style.display = "block";

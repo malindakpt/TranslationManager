@@ -25,6 +25,23 @@ public class EntityManager {
         }
     }
 
+    public void deleteById(Class entity,String colName, int value){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("delete "+entity.getSimpleName()+" where "+colName+" = :value");
+            query.setParameter("value", value);
+            query.executeUpdate();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
     /* Method to DELETE an employee from the records */
     public void delete(Class entity,String colName, String value){
         Session session = HibernateUtil.getSessionFactory().openSession();

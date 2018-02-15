@@ -18,6 +18,7 @@ public class User extends Entity {
     private String password;
     private int role;
     private String sessionId;
+    private int isApproved;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -72,4 +73,11 @@ public class User extends Entity {
         this.sessionId = sessionId;
     }
 
+    @Column(name = "isApproved", nullable = true, length = 40)
+    public int isApproved() {
+        return isApproved;
+    }
+    public void setApproved(int approved) {
+        isApproved = approved;
+    }
 }

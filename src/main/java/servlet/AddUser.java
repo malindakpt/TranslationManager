@@ -32,10 +32,10 @@ public class AddUser extends HttpServlet {
         // Check authorization
         Helper helper = new Helper();
         User user = helper.getUser(request);
-        if(user == null || user!=null && user.getRole() < Constants.ROLE_ADMIN_USER){
-            out.write("Operation not permitted");
-            return;
-        }
+//        if(user == null || user!=null && user.getRole() < Constants.ROLE_ADMIN_USER){
+//            out.write("Operation not permitted");
+//            return;
+//        }
 
         EntityManager entityManager = new EntityManager();
         String name = request.getParameter("name");
@@ -56,6 +56,7 @@ public class AddUser extends HttpServlet {
                 newUser.setUserName(userName);
                 newUser.setPassword(password1);
                 newUser.setRole(role);
+                newUser.setApproved(0);
                 entityManager.add(newUser);
                 entityManager.add(new LogRecord("New user: " +newUser.getName()+"("+newUser.getUserName()+") is added",
                         user, Calendar.getInstance().getTime()));

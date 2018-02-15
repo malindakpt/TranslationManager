@@ -104,6 +104,16 @@ class PageEditTranslationController {
 }
 
 @Controller
+@RequestMapping("/PageMainAdduser")
+class PageMainAdduserController {
+	@RequestMapping(method = RequestMethod.GET)
+	public String printWelcome(ModelMap model) {
+		return "MainAddUser";
+	}
+}
+
+
+@Controller
 @RequestMapping("/PageBatchUpload")
 class PageBatchUploadController {
 	@RequestMapping(method = RequestMethod.POST)
@@ -111,7 +121,6 @@ class PageBatchUploadController {
 		return "components/BatchUpload";
 	}
 }
-
 
 @Controller
 @RequestMapping("/PageSearchKey")

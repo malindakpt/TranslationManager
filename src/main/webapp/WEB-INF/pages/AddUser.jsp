@@ -38,8 +38,8 @@
             $.post('AddUser', {
                     name: $('#name').val(),
                     userName: $('#userName').val(),
-                    password1: $('#password1').val(),
-                    password2: $('#password2').val(),
+                    password1: getHash($('#password1').val()),
+                    password2: getHash($('#password2').val()),
                     isAdmin: $('#isAdmin').prop('checked'),
                     sess: sess
                 },

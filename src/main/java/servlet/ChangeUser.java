@@ -3,8 +3,13 @@ package servlet; /**
  */
 // Import required java libraries
 
+
+import entity.Entity;
+import entity.LogRecord;
 import entity.User;
 import entityManager.EntityManager;
+import util.Constants;
+import util.Helper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,32 +18,33 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
+import java.util.List;
 
-public class Login extends HttpServlet {
-
+public class ChangeUser extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        try {
-            EntityManager entityManager = new EntityManager();
-            String userName = request.getParameter("userName");
-            String password = request.getParameter("password");
 
-            User user = (User) entityManager.getFirstEntity2(User.class,"userName",userName, "password",password);
+        // Check authorization
+        Helper helper = new Helper();
+        User user = helper.getUser(request);
+        if(user == null || user!=null && user.getRole() != Constants.ROLE_OWNER){
+            out.write("Operation not permitted");
+            return;
+        }
 
-            if(user!=null && user.isApproved()==1) {
-                String sessionId = user.getUserId()+""+Calendar.getInstance().getTimeInMillis();
-                user.setSessionId(sessionId);
-                entityManager.update(user);
-                out.write("OK,"+sessionId+","+user.getUserId());
-            }else{
-                out.write("NO,");
-            }
+        EntityManager entityManager = new EntityManager();
+        String userId = request.getParameter("userId");
+        String action = request.getParameter("action");
 
-        }catch (Exception e){
-            e.printStackTrace();
+        if("approve".equals(action)){
+            User user1 = (User) entityManager.getEntity(User.class, "userId", userId);
+            user1.setApproved(1);
+            entityManager.update(user1);
+        }else {
+            entityManager.deleteById(User.class, "userId", Integer.parseInt(userId));
         }
     }
 

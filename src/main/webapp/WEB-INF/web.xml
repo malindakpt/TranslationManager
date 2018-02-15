@@ -8,12 +8,12 @@
 
 
 	<servlet>
-		<servlet-name>BatchUpload</servlet-name>
-		<servlet-class>servlet.BatchUpload</servlet-class>
+		<servlet-name>ChangeUser</servlet-name>
+		<servlet-class>servlet.ChangeUser</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>BatchUpload</servlet-name>
-		<url-pattern>/BatchUpload</url-pattern>
+		<servlet-name>ChangeUser</servlet-name>
+		<url-pattern>/ChangeUser</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

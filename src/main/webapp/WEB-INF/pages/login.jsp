@@ -166,10 +166,13 @@
 </div>
 
 <script>
+    function getHash(s){
+        return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+    }
     function loginUser() {
         $.post('Login', {
                 userName: $('#userName').val(),
-                password: $('#password').val()
+                password: getHash($('#password').val())
             },
             function (result) {
                 console.log(result)
