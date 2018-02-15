@@ -12,12 +12,6 @@
     </div>
 
     <div class="w3-col s4 w3-right ">
-        <%--<div class="w3-row w3-panel w3-light-grey w3-leftbar w3-border-grey w3-padding">--%>
-            <%--<div class="w3-col s5 w3-right ">--%>
-                <%--<button class="w3-indigo w3-button w3-right" onclick="addTranslationToProduct()"><i class="fa fa-outdent"></i>  Add To Product</button>--%>
-            <%--</div>--%>
-            <%--<div class="w3-col s3 w3-right w3-margin-left " id="PageKeySelector">--%>
-                <%--<jsp:include page="components/keySelector.jsp"/>--%>
             <div class="w3-row w3-right">
                 <label>Loc. Keys</label>
                 <input id="idKey" class="w3-radio" type="radio" name="gender" value="key">
@@ -29,26 +23,6 @@
                 <input class="w3-input w3-margin-bottom" id="searchInputValue" onfocus="showSearch()" onblur="hideTimeout()" onkeyup="searchKey()" placeholder="Search localization keys or English terms"/>
                 <div id="searchResultContainer"></div>
             </div>
-
-            <%--</div>--%>
-
-        <%--</div>--%>
-    <script>
-        function hideTimeout() {
-
-            setTimeout(function(){
-                $('#searchResultContainer').hide();
-                $('#searchInputValue').val("");
-                }, 300);
-        }
-
-        function showSearch() {
-            setTimeout(function(){ $('#searchResultContainer').show(); }, 300);
-        }
-
-    </script>
-
-
     </div>
 
 </div>
@@ -93,7 +67,16 @@
 </div>
 
 <script>
+    function hideTimeout() {
+        setTimeout(function(){
+            $('#searchResultContainer').hide();
+            $('#searchInputValue').val("");
+        }, 300);
+    }
 
+    function showSearch() {
+        setTimeout(function(){ $('#searchResultContainer').show(); }, 300);
+    }
     function searchKey() {
         var key = $('#searchInputValue').val();
         var searchKey;
