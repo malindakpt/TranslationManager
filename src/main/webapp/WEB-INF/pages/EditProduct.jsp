@@ -104,7 +104,7 @@
             var blob = new Blob([str], {type: "text/plain;charset=utf-8"});
             saveAs(blob, lan + ".ts");
         } else {
-            swal({text: "Select a language", icon: "error", button: "OK", });
+            swal("Error", "Select a language", "error");
         }
     }
     function showAddTranslation() {
@@ -113,7 +113,7 @@
             getAndSetPage("PageAddTranslation?productId=" + productId, "addTranslationWidget");
 
         } else{
-            swal({text: "Please select a product", icon: "error", button: "OK", });
+            swal("Error", "Please select a product", "error");
         }
     }
     function onProductChange() {
@@ -133,15 +133,15 @@
             function (result) {
                 console.log("Response received");
                 if (result === "") {
-                    swal({text: "Translation Edited !", icon: "success", button: "OK", });
+                    swal("Success", "Translation edited", "success");
                     getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
 
                 } else {
-                    swal({text: result, icon: "error", button: "OK", });
+                    swal("Error", result, "error");
                 }
 
             }).fail(function () {
-                swal({text: "Error", icon: "error", button: "OK", });
+                swal("Error", "Unexpected error occured", "error");
             }
         );
     }
@@ -160,21 +160,22 @@
                     console.log("Response received");
                     if (result === "") {
                         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val(), "translationTable");
-                        swal({text: "Translation removed from product", icon: "success", button: "OK", });
+                        swal("Success", "Translation removed from product", "success");
                     } else {
-                        swal({text: result, icon: "error", button: "OK", });
+                        swal("Error", result, "error");
                     }
 
                 }).fail(function () {
-                    swal({text: "Error", icon: "error", button: "OK", });
+                    swal("Error", "Unexpected error occured", "error");
                 }
             );
         });
 
     }
     function addTranslationToProduct(event) {
+        console.log("Asdasdasd");
         if($('#productSelector').val() < 0){
-            swal({text: "Please select a product", icon: "error", button: "OK", });
+            swal("Error", "Please select aproduct", "error");
         } else {
             $.post('AddTranslationToProduct', {
                     enText: toUnicode(event.dataset.txt),
@@ -186,13 +187,14 @@
                 function (result) {
                     if (result === "") {
                         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val() + "&languageId=" + $('#languageSelector').val(), "translationTable");
-                        swal({text: "Translation added to product", icon: "success", button: "OK", });
+
+                        swal("Success", "Translation added to product", "success");
                     } else {
-                        swal({text: result, icon: "error", button: "OK", });
+                        swal("Error", result, "error");
                     }
 
                 }).fail(function () {
-                    swal({text: "Error", icon: "error", button: "OK", });
+                    swal("Error", "Unexpected error occured", "error");
                 }
             );
         }

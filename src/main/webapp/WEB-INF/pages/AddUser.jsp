@@ -35,13 +35,14 @@
             },
             function (result) {
                 if (result === "") {
+                    swal("Success", "User Added", "success");
                     getAndSetPage("PageAddUser");
                 } else {
-                    swal({text: result, icon: "error", button: "OK", });
+                    swal("Error", result, "error");
                 }
 
             }).fail(function () {
-                swal({text: "Error", icon: "error", button: "OK", });
+                swal("Error", "Unexpected error occured", "error");
             }
         );
     }

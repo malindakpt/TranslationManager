@@ -53,11 +53,11 @@
                         getAndSetPage('PageAllTranslations');
                     }
                 } else {
-                    swal({text: result, icon: "error", button: "OK", });
+                    swal("Error", result, "error");
                 }
 
             }).fail(function () {
-                swal({text: "Error", icon: "error", button: "OK", });
+            swal("Error", "Unexpected error occured", "error");
             }
         );
     }
