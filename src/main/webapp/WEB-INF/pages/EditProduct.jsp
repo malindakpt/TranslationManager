@@ -7,52 +7,62 @@
     <%--<jsp:include page="AddTranslation.jsp"/>--%>
 </div>
 <div class="w3-row w3-bottombar w3-border-indigo " >
-    <div class="w3-col s3  w3-margin-top">
-        <button class="w3-indigo w3-button" onclick="showAddTranslation()" ><i class="fa fa-plus-circle"></i> Add New Translation</button>
-    </div>
 
-    <div class="w3-col s4 w3-right ">
+
+    <div class="w3-col s6 w3-right ">
+        <div class="w3-col s12">
+            <div class="w3-row w3-right" style="width: 100%;">
+                <div class="w3-col s4">
+                    <label>Keys</label>
+                    <input id="idKey" class="w3-radio" type="radio" name="gender" value="key">
+
+                    <label>Words</label>
+                    <input id="idLan" class="w3-radio" type="radio" name="gender" value="lan" checked>
+                </div>
+                <div class="w3-col s8">
+                    <input class="w3-input w3-margin-bottom" id="searchInputValue" onfocus="showSearch()" onblur="hideTimeout()" onkeyup="searchKey()" placeholder="Search..."/>
+                    <div class="w3-col s12" id="searchResultContainer"></div>
+                </div>
+
+            </div>
             <div class="w3-row w3-right">
-                <label>Keys</label>
-                <input id="idKey" class="w3-radio" type="radio" name="gender" value="key">
 
-                <label>Words</label>
-                <input id="idLan" class="w3-radio" type="radio" name="gender" value="lan" checked>
             </div>
-            <div>
-                <input class="w3-input w3-margin-bottom" id="searchInputValue" onfocus="showSearch()" onblur="hideTimeout()" onkeyup="searchKey()" placeholder="Search..."/>
-                <div id="searchResultContainer"></div>
-            </div>
+        </div>
+
+
     </div>
 
 </div>
 <div class="w3-row">
-
-
-    <div class="w3-col s7 w3-margin-top">
+    <div class="w3-col s3  w3-margin-top">
+        <button class="w3-indigo w3-button" onclick="showAddTranslation()" ><i class="fa fa-plus-circle"></i> Add New Translation</button>
+    </div>
+    <div class="w3-col s9 w3-margin-top">
         <div class="w3-row">
-            <div class="w3-col s4">
+            <div class="w3-col s3">
                 <jsp:include page="components/productSelector.jsp"/>
             </div>
-            <div class="w3-col s3">
+            <div class="w3-col s2">
                 <select class="w3-select w3-margin-left" onchange="onProductChange()" id="fileterSelector" >
                     <option value="false" selected>All Entries</option>
                     <option value="true">Empty Entries</option>
                 </select>
             </div>
+            <div style="margin-top: -10px;" class="w3-col w3-right s6 w3-panel w3-light-grey w3-leftbar w3-border-grey w3-padding">
+                <div class="w3-row">
+                    <div class="w3-col s5  w3-right ">
+                        <button class="w3-button w3-indigo  w3-right " onclick="downloadFile()"><i class="fa fa-download"></i>  Download</button>
+                    </div>
+                    <div class="w3-col s7  w3-right ">
+                        <jsp:include page="components/languageSelector.jsp"/>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
-    <div class="w3-col w3-right s5 w3-panel w3-light-grey w3-leftbar w3-border-grey w3-padding">
-        <div class="w3-row">
-            <div class="w3-col s4  w3-right ">
-                <button class="w3-button w3-indigo  w3-right " onclick="downloadFile()"><i class="fa fa-download"></i>  Download</button>
-            </div>
-            <div class="w3-col s8  w3-right ">
-                <jsp:include page="components/languageSelector.jsp"/>
-            </div>
-        </div>
-    </div>
+
 
 <br>
 <br>
@@ -89,7 +99,7 @@
                 searchKey = toUnicode(key);
             }
             $('#searchResultContainer').show()
-            getAndSetPage("PageSearchKey?key=" +  searchKey+"&lan=" + $('#idLan').is(':checked'), "searchResultContainer");
+            getAndSetPage("PageSearchKey?key=" +  searchKey+"&lan=" + $('#idLan').is(':checked'), "searchResultContainer", true);
         } else{
             $('#searchResultContainer').hide();
         }
@@ -121,7 +131,7 @@
         getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val()+"&showEmpty="+$('#fileterSelector').val(), "translationTable");
     }
     function onLanguageChange() {
-        getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val()+"&showEmpty="+$('#fileterSelector').val(), "translationTable");
+        //getAndSetPage("PageProTransTable?productId=" + $('#productSelector').val()+"&showEmpty="+$('#fileterSelector').val(), "translationTable");
     }
 
 

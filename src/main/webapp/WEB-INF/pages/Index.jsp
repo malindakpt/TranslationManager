@@ -187,9 +187,11 @@
             x.className = x.className.replace(" w3-show", "");
         }
     }
-    function getAndSetPage(page, to) {
+    function getAndSetPage(page, to, skipBusy) {
         w3_close();
-        busyOn();
+        if(!skipBusy) {
+            busyOn();
+        }
         $.post(page, {},
             function (result) {
                 if(to){
